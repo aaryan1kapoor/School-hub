@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Hub</title>
+    <style>
+        /* --- TECHNICAL CONTROL PANEL THEME --- */
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0A0D14; 
+            background-image: 
+                linear-gradient(rgba(0, 180, 216, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 180, 216, 0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #E2E8F0; 
+            font-family: 'Inter', system-ui, sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .tech-font { font-family: 'Fira Code', monospace; }
+
+        /* --- SCHOOL HUB TOP HEADER --- */
+        .master-brand-header {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 20px auto;
+            background-color: #121620; 
+            border: 1px solid #1E293B;
+            border-left: 4px solid #00B4D8;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            padding: 15px 25px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .master-brand-header h1 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #00B4D8;
+            font-weight: 600;
+        }
+
+        .session-indicator {
+            color: #10B981;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- MAIN CONTAINER --- */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #0F1219;
+            border: 1px solid #1E293B;
+            padding: 30px;
+            border-radius: 12px;
+            min-height: 70vh;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .view-frame { display: none; }
+        .view-frame.active-view { display: block; }
+
+        h2 {
+            color: #00B4D8;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h3 {
+            color: #E2E8F0;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #1E293B;
+            padding-bottom: 8px;
+        }
+
+        p {
+            color: #94A3B8;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        /* --- INPUTS & FORMS --- */
+        input[type="text"], input[type="password"], input[type="number"], textarea, select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 20px 0;
+            border-radius: 6px;
+            border: 1px solid #2A3441;
+            background-color: #0A0D14;
+            color: #00B4D8;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: #00B4D8;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.2);
+        }
+
+        .password-toggle-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: -10px 0 25px 0;
+            color: #94A3B8;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        /* --- BUTTONS --- */
+        button {
+            padding: 10px 24px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 12px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        button.primary-btn {
+            background-color: #00B4D8;
+            color: #0A0D14;
+            width: 100%;
+            margin: 10px 0;
+        }
+        button.primary-btn:hover { background-color: #00E5FF; }
+
+        button.secondary-btn {
+            background-color: transparent;
+            color: #94A3B8;
+            border: 1px solid #334155;
+        }
+        button.secondary-btn:hover {
+            color: #FFFFFF;
+            border-color: #FFFFFF;
+        }
+
+        button.action-btn-green { background-color: #10B981; color: #0A0D14; padding: 6px 14px; margin-right: 8px;}
+        button.action-btn-green:hover { background-color: #34D399; }
+
+        button.action-btn-red { background-color: #EF4444; color: #FFFFFF; padding: 6px 14px; margin-right: 8px;}
+        button.action-btn-red:hover { background-color: #F87171; }
+
+        .top-action-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #1E293B;
+        }
+
+        /* --- LOGIN TAB SYSTEM --- */
+        .login-box { max-width: 500px; margin: 20px auto; }
+        .login-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        .login-tab {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            background-color: #121620;
+            border: 1px solid #2A3441;
+            border-radius: 6px;
+            cursor: pointer;
+            color: #94A3B8;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .login-tab:hover { background-color: #1E293B; color: #E2E8F0; }
+        .login-tab.active {
+            background-color: #00B4D8;
+            color: #0A0D14;
+            border-color: #00B4D8;
+        }
+        .login-form-section { display: none; }
+        .login-form-section.active { display: block; }
+        
+        .split-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* --- DASHBOARD MASTER LAYOUT --- */
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+        }
+        @media(max-width: 900px) { .dashboard-layout { grid-template-columns: 1fr; } }
+
+        /* Profile Box */
+        .profile-box {
+            background-color: #121620;
+            border: 1px solid #1E293B;
+            border-top: 4px solid #00B4D8;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            height: fit-content;
+        }
+
+        .profile-box .avatar {
+            font-size: 32px;
+            font-weight: bold;
+            color: #00B4D8;
+            margin-bottom: 15px;
+            background-color: #0A0D14;
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            border-radius: 50%;
+            margin: 0 auto 15px auto;
+            border: 1px solid #334155;
+            text-transform: uppercase;
+        }
+
+        .profile-data-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #1E293B;
+            color: #94A3B8;
+        }
+        .profile-data-value {
+            color: #00B4D8;
+            font-weight: 600;
+        }
+
+        /* Notifications Console */
+        .notifications-console {
+            background-color: #0A0D14;
+            border: 1px solid #1E293B;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .notifications-console h3 { color: #A855F7; border-bottom: 1px dashed #2A3441; }
+        .alert-item {
+            padding: 10px 15px;
+            background-color: #121620;
+            border-left: 3px solid #10B981;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #E2E8F0;
+        }
+        .alert-item.warning { border-left-color: #F59E0B; }
+        .alert-item.urgent { border-left-color: #EF4444; }
+
+        /* Module Grid */
+        .apps-selection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .module-selection-card {
+            background-color: #121620;
+            border: 1px solid #2A3441;
+            border-radius: 8px;
+            padding: 25px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .module-selection-card:hover {
+            border-color: #00B4D8;
+            background-color: #181D29;
+            transform: translateY(-2px);
+        }
+        .module-icon-box { 
+            margin: 0 auto 15px auto; 
+            width: 48px; 
+            height: 48px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00B4D8;
+        }
+        .module-icon-box svg { width: 100%; height: 100%; fill: currentColor; }
+
+        /* --- APP WORKSPACES --- */
+        .split-workspace {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        @media(max-width: 800px) { .split-workspace { grid-template-columns: 1fr; } }
+
+        .workspace-pane {
+            background-color: #121620;
+            border: 1px solid #1E293B;
+            border-radius: 8px;
+            padding: 25px;
+        }
+
+        .repository-item-card {
+            background-color: #0A0D14;
+            border: 1px solid #2A3441;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border-left: 3px solid #00B4D8;
+        }
+        .repository-item-card.pending-accent { border-left-color: #F59E0B; }
+
+        .seating-output-crews {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        @media(max-width: 900px) { .seating-output-crews { grid-template-columns: 1fr 1fr; } }
+        @media(max-width: 600px) { .seating-output-crews { grid-template-columns: 1fr; } }
+
+        .crew-block {
+            background-color: #0A0D14;
+            border: 1px dashed #334155;
+            border-radius: 8px;
+            padding: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 8px;
+        }
+        .crew-label {
+            grid-column: span 2;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #A855F7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .desk-slot {
+            background-color: #161B26;
+            border: 1px solid #2A3441;
+            padding: 10px 5px;
+            border-radius: 4px;
+            text-align: center;
+            color: #00B4D8;
+            font-size: 0.85rem;
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .desk-slot.vacant-slot { color: #475569; border-style: dotted; background-color: transparent; }
+        .desk-slot.single-back-desk { grid-column: span 2; max-width: 50%; margin: 0 auto; width: 100%; }
+
+    </style>
+
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+    <div class="master-brand-header">
+        <h1>School Hub</h1>
+        <div class="session-indicator tech-font" id="session-tag">Logged Out</div>
+    </div>
+
+    <div class="container">
+
+        <div id="view-login" class="view-frame active-view">
+            <div class="login-box">
+                <h2 style="text-align:center;">Welcome</h2>
+                <p style="text-align:center; font-size:0.85rem; margin-bottom:20px;">Select your profile type and log in below.</p>
+
+                <div class="login-tabs">
+                    <div class="login-tab active" id="tab-student" onclick="switchLoginTab('student')">Student</div>
+                    <div class="login-tab" id="tab-teacher" onclick="switchLoginTab('teacher')">Teacher</div>
+                    <div class="login-tab" id="tab-parent" onclick="switchLoginTab('parent')">Parent</div>
+                </div>
+
+                <div id="form-student" class="login-form-section active">
+                    <label>Student Username/Email:</label>
+                    <input type="text" id="stu-id" placeholder="Enter your username">
+                    <label>Password:</label>
+                    <input type="password" id="stu-pass" placeholder="Enter your password">
+                    
+                    <div class="split-inputs">
+                        <div>
+                            <label>Grade:</label>
+                            <input type="text" id="stu-grade" placeholder="e.g. 9">
+                        </div>
+                        <div>
+                            <label>Section:</label>
+                            <input type="text" id="stu-sec" placeholder="e.g. A">
+                        </div>
+                    </div>
+                    
+                    <button class="primary-btn" onclick="executeLogin('student')">Log In As Student</button>
+                </div>
+
+                <div id="form-teacher" class="login-form-section">
+                    <label>Teacher Username/Email:</label>
+                    <input type="text" id="tch-id" placeholder="Enter your username">
+                    <label>Password:</label>
+                    <input type="password" id="tch-pass" placeholder="Enter your password">
+                    
+                    <div class="split-inputs">
+                        <div>
+                            <label>Verification Code:</label>
+                            <input type="password" id="tch-code" placeholder="Enter 4-digit code">
+                        </div>
+                        <div>
+                            <label>Your Subject:</label>
+                            <input type="text" id="tch-subj" placeholder="e.g. History">
+                        </div>
+                    </div>
+
+                    <button class="primary-btn" onclick="executeLogin('teacher')">Log In As Teacher</button>
+                </div>
+
+                <div id="form-parent" class="login-form-section">
+                    <label>Parent Username/Email:</label>
+                    <input type="text" id="par-id" placeholder="Enter your username">
+                    <label>Password:</label>
+                    <input type="password" id="par-pass" placeholder="Enter your password">
+                    
+                    <label>Parent Access Code:</label>
+                    <input type="password" id="par-code" placeholder="Enter access code">
+
+                    <label>Your Child's Exact Username:</label>
+                    <input type="text" id="par-child" placeholder="Enter your student's username">
+
+                    <button class="primary-btn" onclick="executeLogin('parent')">Log In As Parent</button>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="view-main-dashboard" class="view-frame">
+            <div class="top-action-bar">
+                <h2 id="dash-title">Dashboard</h2>
+            </div>
+
+            <div class="dashboard-layout">
+                <div class="profile-box">
+                    <div class="avatar" id="dash-avatar">U</div>
+                    
+                    <div class="profile-data-row">
+                        <span>Username:</span>
+                        <span class="profile-data-value tech-font" id="dash-user-id">...</span>
+                    </div>
+                    <div class="profile-data-row">
+                        <span>Profile:</span>
+                        <span class="profile-data-value tech-font" id="dash-user-role">...</span>
+                    </div>
+
+                    <div class="profile-data-row" id="dash-extra-info-container" style="display:none;">
+                        <span id="dash-extra-label">Info:</span>
+                        <span class="profile-data-value tech-font" id="dash-extra-value">...</span>
+                    </div>
+                    
+                    <button class="secondary-btn" style="width:100%; margin-top:20px; border-color:#EF4444; color:#EF4444;" onclick="triggerSystemLogout()">Log Out</button>
+                </div>
+
+                <div>
+                    <div class="notifications-console">
+                        <h3>Notifications</h3>
+                        <div id="dash-notifications-list" style="margin-top:15px;">
+                            <div class="alert-item" style="border-color:#475569; color:#94A3B8;">Loading school updates...</div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-bottom:15px; color:#00B4D8; border:none;">Your Apps</h3>
+                    <div class="apps-selection-grid" id="dash-apps-grid">
+                        </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="view-lost-found-app" class="view-frame">
+            <div class="top-action-bar">
+                <h2>Lost & Found</h2>
+                <button class="secondary-btn" onclick="fallbackToDashboardRoot()">Home</button>
+            </div>
+            <div class="split-workspace">
+                <div class="workspace-pane">
+                    <h3>Report an Item</h3>
+                    <label>What are you doing?:</label>
+                    <select id="lf-input-type">
+                        <option value="lost">I lost something (Report Lost Item)</option>
+                        <option value="turned_in">I found something (Report Found Item)</option>
+                    </select>
+                    <label>Item Name:</label>
+                    <input type="text" id="lf-input-name" placeholder="e.g., Blue Water Bottle">
+                    <label>Where was it lost or found?:</label>
+                    <input type="text" id="lf-input-location" placeholder="e.g., Playground / Room 4B">
+                    <label>Description:</label>
+                    <textarea id="lf-input-desc" rows="2" placeholder="What does it look like? Any specific stickers or scratches?"></textarea>
+                    <button class="primary-btn" onclick="processLFNamedDispatch()">Report</button>
+
+                    <h3 style="margin-top: 30px; color:#F59E0B;">Lost Items Feed</h3>
+                    <div id="lf-lost-feed-root"></div>
+                </div>
+                <div class="workspace-pane">
+                    <h3>Items Found on Campus</h3>
+                    <input type="text" id="lf-explorer-search" placeholder="Type to search items..." onkeyup="processLFLiveFilter()">
+                    <div id="lf-explore-feed-root" style="margin-top: 15px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-fitness-app" class="view-frame">
+            <div class="top-action-bar">
+                <h2>FitTrack App</h2>
+                <div class="password-toggle-row" style="margin:0;">
+                    <button class="secondary-btn" id="fit-nav-btn-elig" style="margin-right:10px;" onclick="toggleFitnessSubMode('eligibility')">School Team Eligibility</button>
+                    <button class="secondary-btn" id="fit-nav-btn-pers" onclick="toggleFitnessSubMode('personal')">Personal Data</button>
+                </div>
+                <button class="secondary-btn" onclick="fallbackToDashboardRoot()">Home</button>
+            </div>
+            
+            <div id="fit-sub-eligibility" class="split-workspace">
+                <div class="workspace-pane">
+                    <h3>Compare Scores with Team Requirements</h3>
+                    <label>Select a School Team:</label>
+                    <select id="fit-sport-selector" onchange="runSportEligibilityEvaluation()">
+                        <option value="cricket">Cricket Team</option>
+                        <option value="football">Football Team</option>
+                        <option value="athletics">Track & Field Team</option>
+                    </select>
+                    <div id="sport-benchmarks-readout" class="tech-font" style="background-color:#0A0D14; border:1px solid #1E293B; padding:15px; border-radius:6px; font-size:0.8rem; line-height: 1.8; margin-bottom: 20px; color:#00B4D8;"></div>
+                    
+                    <h3 style="color:#E2E8F0; font-size: 1rem;">Type Your Scores Here to Compare:</h3>
+                    <label>Your 100m Dash Time (Seconds):</label>
+                    <input type="number" step="0.1" id="comp-sprint" placeholder="e.g., 14.2" onkeyup="runSportEligibilityEvaluation()">
+                    <label>Your Long Jump Distance (Meters):</label>
+                    <input type="number" step="0.1" id="comp-longjump" placeholder="e.g., 3.8" onkeyup="runSportEligibilityEvaluation()">
+                    <label>Your Max Push-ups (Reps):</label>
+                    <input type="number" id="comp-pushups" placeholder="e.g., 22" onkeyup="runSportEligibilityEvaluation()">
+                    <label>Distance Run (Meters):</label>
+                    <input type="number" step="1" id="comp-distance" placeholder="e.g., 2000" onkeyup="runSportEligibilityEvaluation()">
+                </div>
+                <div class="workspace-pane">
+                    <h3>Eligibility Result</h3>
+                    <div id="eligibility-shield-target" style="background-color:#0A0D14; border:1px dashed #334155; padding:25px; border-radius:8px; text-align:center; margin-top:20px;">
+                        Type your scores on the left to test your eligibility.
+                    </div>
+                </div>
+            </div>
+
+            <div id="fit-sub-personal" class="split-workspace" style="display:none;">
+                <div class="workspace-pane">
+                    <h3>Save Personal Best Scores</h3>
+                    <label>Choose Category:</label>
+                    <select id="fit-log-discipline">
+                        <option value="sprint">100m Sprint (Seconds)</option>
+                        <option value="longjump">Long Jump (Meters)</option>
+                        <option value="pushups">Push-ups (Max Count)</option>
+                        <option value="distance">Distance Run (Meters)</option>
+                    </select>
+                    <label>Your New Best Score:</label>
+                    <input type="text" id="fit-log-value" placeholder="Type score here">
+                    <button class="primary-btn" onclick="commitFitnessMetricsToFirebase()">Save Score</button>
+                </div>
+                <div class="workspace-pane">
+                    <h3>Your Personal Best Records</h3>
+                    <div class="tech-font" style="background-color:#0A0D14; padding:20px; border-radius:8px; border:1px solid #1E293B; line-height:2.2; font-size:0.9rem;">
+                        🏃 100m Sprint: <strong id="lbl-pb-sprint" style="color:#00B4D8; float:right;">None Logged</strong><br>
+                        📐 Long Jump: <strong id="lbl-pb-longjump" style="color:#00B4D8; float:right;">None Logged</strong><br>
+                        💪 Push-ups: <strong id="lbl-pb-pushups" style="color:#00B4D8; float:right;">None Logged</strong><br>
+                        👟 Distance Run: <strong id="lbl-pb-distance" style="color:#00B4D8; float:right;">None Logged</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-seating-app" class="view-frame">
+            <div class="top-action-bar">
+                <h2>Seating Planner</h2>
+                <button class="secondary-btn" onclick="fallbackToDashboardRoot()">Home</button>
+            </div>
+            <div class="split-workspace">
+                <div class="workspace-pane">
+                    <h3>Classroom Setup (Crew Formation)</h3>
+                    <label>Class Name:</label>
+                    <input type="text" id="seat-input-classname" placeholder="e.g., Grade 9 History">
+                    <label>Total Number of Desks in Class:</label>
+                    <input type="number" id="seat-input-capacity" placeholder="32">
+                    <label>Names of All Students (Separate names with commas):</label>
+                    <textarea id="seat-input-roster" rows="3" placeholder="Rahul, Priya, Amit..."></textarea>
+                    
+                    <h3 style="color:#A855F7; border-top:1px solid #1E293B; padding-top:15px; margin-top:15px;">Optional Settings</h3>
+                    <label>Students who talk a lot and should NOT sit together (Format: Name1-Name2):</label>
+                    <input type="text" id="seat-input-talkers" placeholder="e.g., Rahul-Amit">
+                    <label>Tall children who can sit in the Back 3 Crews (Separate with commas):</label>
+                    <input type="text" id="seat-input-tall" placeholder="e.g., Vikram, Kabir">
+                    <label>Children with eyesight problems who must sit in the Front 3 Crews (Separate with commas):</label>
+                    <input type="text" id="seat-input-eyes" placeholder="e.g., Ananya, Diya">
+                    <button class="primary-btn" onclick="executeAlgorithmicSeatingPlan()">Make Seating Arrangement</button>
+                </div>
+                <div class="workspace-pane">
+                    <h3>Seating Chart Output</h3>
+                    <div style="background-color:#00B4D8; color:#0A0D14; text-align:center; padding:5px; font-weight:bold; font-size:0.75rem; letter-spacing:4px; border-radius:4px;">
+                        CHALKBOARD / PROJECTOR SCREEN HERE
+                    </div>
+                    <div id="seating-matrix-target" class="seating-output-crews">
+                        <div style="color:#475569; font-style:italic; grid-column:span 3; text-align:center;">Awaiting settings setup...</div>
+                    </div>
+                    <div id="seating-save-actions" style="display:none; margin-top:20px;">
+                        <button class="primary-btn" style="background-color:#10B981; color:#0A0D14;" onclick="commitArrangementChartToFirebase()">Save Seating Arrangement</button>
+                    </div>
+                    <h3 style="margin-top:35px; border-top:1px solid #1E293B; padding-top:20px; color:#A855F7;">Saved Arrangements</h3>
+                    <div id="seating-history-logs-target"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="view-events-app" class="view-frame">
+            <div class="top-action-bar">
+                <h2 id="event-app-title">School Events</h2>
+                <button class="secondary-btn" onclick="fallbackToDashboardRoot()">Home</button>
+            </div>
+            <div class="split-workspace">
+                <div class="workspace-pane" id="event-left-pane">
+                    </div>
+                <div class="workspace-pane">
+                    <div id="teacher-approvals-section" style="display:none;">
+                        <h3 style="color:#F59E0B;">Needs Teacher Approval</h3>
+                        <div id="event-pending-feed"></div>
+                        <h3 style="margin-top:25px; border-top:1px solid #1E293B; padding-top:20px;">Active Verified Events</h3>
+                    </div>
+                    <div id="general-events-header">
+                        <h3>Active Events</h3>
+                    </div>
+                    <div id="event-feed-target"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyA9E9u1bVVMeWEhpnTDe-_2JpXLBGfoD8c",
+            authDomain: "lost-and-found-app-d75da.firebaseapp.com",
+            projectId: "lost-and-found-app-d75da",
+            storageBucket: "lost-and-found-app-d75da.firebasestorage.app",
+            messagingSenderId: "136684063144",
+            appId: "1:136684063144:web:ba759f44e10e413f32b59d",
+            measurementId: "G-5WHBSLCRCN"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        let loggedUserToken = null;
+        let loggedUserRole = null;
+        let activeLostFoundCache = [];
+        let currentlyCompiledSeatingPlan = null;
+        
+        // --- SVG ICONS CONSTANTS ---
+        const ICON_BOX = `<svg viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18s-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18s.41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9zM12 4.15L6.04 7.5L12 10.85l5.96-3.35L12 4.15zM5 15.91l6 3.38v-6.71L5 9.21v6.7zM13 19.29l6-3.38V9.21l-6 3.38v6.7z"/></svg>`;
+        const ICON_FIT = `<svg viewBox="0 0 24 24"><path d="M13.49 5.48c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 13.9l1-4.4 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1l-5.2 2.2v4.7h2v-3.4l1.8-.7-1.6 8.1-4.9-1-.4 2 6.7 1.4 1.1-5.4z"/></svg>`;
+        const ICON_EVENT = `<svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>`;
+        const ICON_GRID = `<svg viewBox="0 0 24 24"><path d="M3 3v8h8V3H3zm6 6H5V5h4v4zm-6 4v8h8v-8H3zm6 6H5v-4h4v4zm4-16v8h8V3h-8zm6 6h-4V5h4v4zm-6 4v8h8v-8h-8zm6 6h-4v-4h4v4z"/></svg>`;
+        const ICON_TICKET = `<svg viewBox="0 0 24 24"><path d="M22 10V6c0-1.1-.9-2-2-2H4c-1.1 0-1.99.89-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-2 7.74C18.6 16.64 17 14.48 17 12c0-2.48 1.6-4.64 3-5.74V6H4v.26C5.4 7.36 7 9.52 7 12c0 2.48-1.6 4.64-3 5.74V18h16v-.26z"/></svg>`;
+
+        const standardSportBenchmarks = {
+            cricket:   { title: "Cricket Team", sprint: 14.5, longjump: 3.2, pushups: 15, distance: 1500 },
+            football:  { title: "Football Team", sprint: 13.5, longjump: 4.0, pushups: 25, distance: 2400 },
+            athletics: { title: "Track & Field Team", sprint: 12.2, longjump: 5.2, pushups: 20, distance: 3000 }
+        };
+
+        function changeViewFrame(viewId) {
+            document.querySelectorAll('.view-frame').forEach(frame => frame.classList.remove('active-view'));
+            document.getElementById(viewId).classList.add('active-view');
+            window.scrollTo(0,0);
+        }
+
+        function switchLoginTab(tab) {
+            document.querySelectorAll('.login-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.login-form-section').forEach(f => f.classList.remove('active'));
+            document.getElementById(`tab-${tab}`).classList.add('active');
+            document.getElementById(`form-${tab}`).classList.add('active');
+        }
+
+        // --- ACCOUNT LOGIC ---
+        async function executeLogin(role) {
+            // FIX: Hardcode 'tch' prefix for teacher to exactly match the HTML structure
+            let pfx = role === 'teacher' ? 'tch' : role.substring(0,3);
+            
+            let idField = document.getElementById(`${pfx}-id`).value.trim().toLowerCase();
+            let passField = document.getElementById(`${pfx}-pass`).value.trim();
+            
+            if(idField === "" || passField === "") { 
+                alert("Please fill in your Username and Password."); return; 
+            }
+
+            let metaData = {};
+
+            if(role === 'student') {
+                const grade = document.getElementById('stu-grade').value.trim();
+                const section = document.getElementById('stu-sec').value.trim();
+                if(grade === "" || section === "") { alert("Please fill in your Grade and Section."); return; }
+                metaData = { grade: grade, section: section };
+            } 
+            else if (role === 'teacher') {
+                const code = document.getElementById('tch-code').value.trim();
+                const subj = document.getElementById('tch-subj').value.trim();
+                if(code !== "2345") { alert("Incorrect Teacher Verification Code."); return; }
+                if(subj === "") { alert("Please fill in your Subject."); return; }
+                metaData = { subject: subj };
+            }
+            else if (role === 'parent') {
+                const code = document.getElementById('par-code').value.trim();
+                const child = document.getElementById('par-child').value.trim();
+                if(code !== "234") { alert("Incorrect Parent Access Code."); return; }
+                if(child === "") { alert("Please type your child's exact username."); return; }
+                metaData = { childName: child };
+            }
+
+            const userDocRef = db.collection("users").doc(idField);
+            
+            try {
+                const docSnap = await userDocRef.get();
+                if(docSnap.exists) {
+                    const profileData = docSnap.data();
+                    if(profileData.password === passField) {
+                        await userDocRef.update({ ...metaData, role: role });
+                        loggedUserToken = idField;
+                        loggedUserRole = role;
+                        loadMainDashboard();
+                    } else { alert("Incorrect password. Please try again."); }
+                } else {
+                    await userDocRef.set({ 
+                        password: passField, 
+                        role: role, 
+                        dismissedItems: [],
+                        ...metaData
+                    });
+                    loggedUserToken = idField;
+                    loggedUserRole = role;
+                    loadMainDashboard();
+                }
+            } catch(e) { alert("Database connection error."); }
+        }
+
+        function triggerSystemLogout() {
+            loggedUserToken = null; loggedUserRole = null;
+            document.getElementById('session-tag').innerText = "Logged Out";
+            document.getElementById('session-tag').style.color = "#475569";
+            
+            document.querySelectorAll('input').forEach(i => i.value = "");
+            changeViewFrame('view-login');
+        }
+
+        function fallbackToDashboardRoot() {
+            loadMainDashboard();
+        }
+
+        // --- DYNAMIC DASHBOARD ENGINE ---
+        async function loadMainDashboard() {
+            changeViewFrame('view-main-dashboard');
+            
+            let friendlyRole = "Student";
+            if (loggedUserRole === 'teacher') friendlyRole = "Teacher";
+            if (loggedUserRole === 'parent') friendlyRole = "Parent";
+
+            document.getElementById('session-tag').innerText = `Logged In: ${friendlyRole}`;
+            document.getElementById('session-tag').style.color = "#10B981";
+            
+            document.getElementById('dash-avatar').innerText = loggedUserToken.charAt(0);
+            document.getElementById('dash-user-id').innerText = loggedUserToken;
+            document.getElementById('dash-user-role').innerText = friendlyRole;
+            
+            const extraInfoBox = document.getElementById('dash-extra-info-container');
+            const extraLabel = document.getElementById('dash-extra-label');
+            const extraValue = document.getElementById('dash-extra-value');
+            
+            try {
+                const pData = (await db.collection("users").doc(loggedUserToken).get()).data();
+                if(loggedUserRole === 'student' && pData.grade) {
+                    extraInfoBox.style.display = "flex";
+                    extraLabel.innerText = "Class:";
+                    extraValue.innerText = `${pData.grade}-${pData.section}`;
+                } else if(loggedUserRole === 'teacher' && pData.subject) {
+                    extraInfoBox.style.display = "flex";
+                    extraLabel.innerText = "Subject:";
+                    extraValue.innerText = pData.subject;
+                } else if(loggedUserRole === 'parent' && pData.childName) {
+                    extraInfoBox.style.display = "flex";
+                    extraLabel.innerText = "Child:";
+                    extraValue.innerText = pData.childName;
+                } else {
+                    extraInfoBox.style.display = "none";
+                }
+            } catch(e) { extraInfoBox.style.display = "none"; }
+
+            const dashTitle = document.getElementById('dash-title');
+            const appsGrid = document.getElementById('dash-apps-grid');
+            
+            if(loggedUserRole === 'student') {
+                dashTitle.innerText = "Student Dashboard";
+                appsGrid.innerHTML = `
+                    <div class="module-selection-card" onclick="bootLostFoundSystem()"><div class="module-icon-box" style="color:#00B4D8;">${ICON_BOX}</div><h3>Lost & Found</h3></div>
+                    <div class="module-selection-card" onclick="bootFitnessSystem()"><div class="module-icon-box" style="color:#A855F7;">${ICON_FIT}</div><h3>FitTrack</h3></div>
+                    <div class="module-selection-card" onclick="bootEventPulseSystem()"><div class="module-icon-box" style="color:#10B981;">${ICON_EVENT}</div><h3>School Events</h3></div>
+                `;
+            } else if(loggedUserRole === 'teacher') {
+                dashTitle.innerText = "Teacher Dashboard";
+                appsGrid.innerHTML = `
+                    <div class="module-selection-card" onclick="bootLostFoundSystem()"><div class="module-icon-box" style="color:#00B4D8;">${ICON_BOX}</div><h3>Lost & Found</h3></div>
+                    <div class="module-selection-card" onclick="bootSeatingPlannerSystem()"><div class="module-icon-box" style="color:#A855F7;">${ICON_GRID}</div><h3>Seating Planner</h3></div>
+                    <div class="module-selection-card" onclick="bootEventPulseSystem()"><div class="module-icon-box" style="color:#10B981;">${ICON_EVENT}</div><h3>Event Management</h3></div>
+                `;
+            } else if(loggedUserRole === 'parent') {
+                dashTitle.innerText = "Parent Dashboard";
+                appsGrid.innerHTML = `
+                    <div class="module-selection-card" onclick="bootEventPulseSystem()"><div class="module-icon-box" style="color:#10B981;">${ICON_TICKET}</div><h3>Events & Tickets</h3></div>
+                `;
+            }
+
+            generateDashboardNotifications();
+        }
+
+        async function generateDashboardNotifications() {
+            const notifBox = document.getElementById('dash-notifications-list');
+            notifBox.innerHTML = "<div class='alert-item' style='border-color:#00B4D8; color:#00B4D8;'>Checking databases...</div>";
+            
+            let notifications = [];
+
+            try {
+                const eventsSnap = await db.collection("events").get();
+                let activeEvents = 0; let pendingEvents = 0; let parentBookable = 0;
+                
+                eventsSnap.forEach(doc => {
+                    const e = doc.data();
+                    if(e.status === 'approved') {
+                        activeEvents++;
+                        if(e.parentsAllowed === 'yes' && e.seatsLeft > 0) parentBookable++;
+                    } else if(e.status === 'pending') {
+                        pendingEvents++;
+                    }
+                });
+
+                const itemsSnap = await db.collection("items").where("claimed", "==", false).get();
+                let lostItems = 0; let foundItems = 0;
+                itemsSnap.forEach(doc => {
+                    if(doc.data().type === 'lost') lostItems++;
+                    else if(doc.data().type === 'turned_in') foundItems++;
+                });
+
+                if(loggedUserRole === 'student') {
+                    if(activeEvents > 0) notifications.push(`<div class='alert-item'>📅 There are ${activeEvents} active school events happening now.</div>`);
+                    if(lostItems > 0) notifications.push(`<div class='alert-item warning'>📦 ${lostItems} items have been reported missing by students.</div>`);
+                    if(foundItems > 0) notifications.push(`<div class='alert-item'>🔍 ${foundItems} items have been found and are in the school office.</div>`);
+                } else if(loggedUserRole === 'teacher') {
+                    if(pendingEvents > 0) notifications.push(`<div class='alert-item urgent'>⚠️ You have ${pendingEvents} student events waiting for your approval.</div>`);
+                    if(activeEvents > 0) notifications.push(`<div class='alert-item'>📢 There are ${activeEvents} active verified events on the board.</div>`);
+                } else if(loggedUserRole === 'parent') {
+                    if(parentBookable > 0) notifications.push(`<div class='alert-item'>🎟️ There are ${parentBookable} school events open for parent ticket booking.</div>`);
+                }
+
+                if(notifications.length === 0) {
+                    notifBox.innerHTML = "<div class='alert-item' style='border-color:#475569; color:#94A3B8;'>All caught up! No active updates to display.</div>";
+                } else {
+                    notifBox.innerHTML = notifications.join("");
+                }
+            } catch(e) {
+                notifBox.innerHTML = "<div class='alert-item urgent'>Error loading notifications list data feed from database.</div>";
+            }
+        }
+        
+        // --- LOST & FOUND ---
+        function bootLostFoundSystem() { changeViewFrame('view-lost-found-app'); renderLFLedgerUIFromCache(); }
+        async function renderLFLedgerUIFromCache() {
+            try {
+                const userDoc = await db.collection("users").doc(loggedUserToken).get();
+                const personalDismissedList = userDoc.exists && userDoc.data().dismissedItems ? userDoc.data().dismissedItems : [];
+                const snap = await db.collection("items").get();
+                const lostFeedRoot = document.getElementById('lf-lost-feed-root');
+                lostFeedRoot.innerHTML = ""; activeLostFoundCache = []; 
+                snap.forEach(doc => {
+                    const item = doc.data(); item.id = doc.id;
+                    if(item.claimed === true) return; 
+                    if(item.type === 'lost') {
+                        if(personalDismissedList.includes(item.id)) return; 
+                        const card = document.createElement('div'); card.className = "repository-item-card lost-accent";
+                        card.innerHTML = `<strong>🚨 LOST: ${item.name}</strong><br><span style="font-size:0.85rem; color:#94A3B8;">Where lost: ${item.location}</span><br><p style="font-size:0.85rem; margin:4px 0 10px 0;">Description: ${item.desc || 'No description added.'}</p><button class="action-btn-green" onclick="processLFOptFoundUpdate('${item.id}')">Found</button><button class="action-btn-red" onclick="processLFOptDismissUpdate('${item.id}')">Dismiss</button>`;
+                        lostFeedRoot.appendChild(card);
+                    } else if(item.type === 'turned_in') { activeLostFoundCache.push(item); }
+                });
+                renderLFExplorePaneGrid(activeLostFoundCache);
+            } catch(e) { console.error(e); }
+        }
+        function renderLFExplorePaneGrid(arrayData) {
+            const exploreRoot = document.getElementById('lf-explore-feed-root'); exploreRoot.innerHTML = "";
+            if(arrayData.length === 0) { exploreRoot.innerHTML = "<p style='color:#00B4D8; font-style:italic;'>No found items registered yet.</p>"; return; }
+            arrayData.forEach(item => {
+                const card = document.createElement('div'); card.className = "repository-item-card";
+                card.innerHTML = `<strong>📦 FOUND: ${item.name}</strong><br><span style="font-size:0.85rem; color:#94A3B8;">Where found: ${item.location}</span><br><p style="font-size:0.85rem; margin:4px 0 10px 0;">Description: ${item.desc || 'No details.'}</p><button class="action-btn-green" style="border-radius:4px;" onclick="processLFClaimSequence('${item.id}', '${item.name}', '${item.location}')">Claim Item</button>`;
+                exploreRoot.appendChild(card);
+            });
+        }
+        function processLFLiveFilter() {
+            const query = document.getElementById('lf-explorer-search').value.toLowerCase();
+            const filtered = activeLostFoundCache.filter(item => item.name.toLowerCase().includes(query) || item.location.toLowerCase().includes(query));
+            renderLFExplorePaneGrid(filtered);
+        }
+        async function processLFNamedDispatch() {
+            const type = document.getElementById('lf-input-type').value; const name = document.getElementById('lf-input-name').value;
+            const loc = document.getElementById('lf-input-location').value; const desc = document.getElementById('lf-input-desc').value;
+            if(name.trim() === "" || loc.trim() === "") { alert("Please fill in the Item Name and Location!"); return; }
+            try {
+                await db.collection("items").add({ type: type, name: name.trim(), location: loc.trim(), desc: desc.trim(), claimed: false });
+                alert("Item saved successfully!"); document.getElementById('lf-input-name').value = ""; document.getElementById('lf-input-location').value = ""; document.getElementById('lf-input-desc').value = "";
+                renderLFLedgerUIFromCache();
+            } catch(e) { alert("Error saving report."); }
+        }
+        async function processLFOptFoundUpdate(itemId) { try { await db.collection("items").doc(itemId).update({ type: 'turned_in' }); renderLFLedgerUIFromCache(); } catch(e) { console.error(e); } }
+        async function processLFOptDismissUpdate(itemId) { try { await db.collection("users").doc(loggedUserToken).update({ dismissedItems: firebase.firestore.FieldValue.arrayUnion(itemId) }); renderLFLedgerUIFromCache(); } catch(e) { console.error(e); } }
+        async function processLFClaimSequence(itemId, name, oldLoc) {
+            let ver = prompt(`CLAIM ITEM VERIFICATION FOR: ${name}\nFound At: ${oldLoc}\n\nDescribe a unique feature or look to verify you own this item:`);
+            if(ver && ver.trim() !== "") { try { await db.collection("items").doc(itemId).update({ claimed: true }); renderLFLedgerUIFromCache(); } catch(e) { console.error(e); } }
+        }
+
+        // --- FITTRACK ---
+        function bootFitnessSystem() { changeViewFrame('view-fitness-app'); toggleFitnessSubMode('eligibility'); }
+        async function toggleFitnessSubMode(mode) {
+            if(mode === 'eligibility') {
+                document.getElementById('fit-sub-eligibility').style.display = "grid"; document.getElementById('fit-sub-personal').style.display = "none";
+                try {
+                    const doc = await db.collection("fitness_profiles").doc(loggedUserToken).get();
+                    if(doc.exists) {
+                        const p = doc.data(); document.getElementById('comp-sprint').value = p.sprint || ""; document.getElementById('comp-longjump').value = p.longjump || "";
+                        document.getElementById('comp-pushups').value = p.pushups || ""; document.getElementById('comp-distance').value = p.distance || "";
+                    }
+                } catch(e) { console.error(e); }
+                runSportEligibilityEvaluation();
+            } else {
+                document.getElementById('fit-sub-eligibility').style.display = "none"; document.getElementById('fit-sub-personal').style.display = "grid";
+                syncFitnessBestLabelsUI();
+            }
+        }
+        async function syncFitnessBestLabelsUI() {
+            try {
+                const doc = await db.collection("fitness_profiles").doc(loggedUserToken).get();
+                document.getElementById('lbl-pb-sprint').innerText = "None Logged"; document.getElementById('lbl-pb-longjump').innerText = "None Logged";
+                document.getElementById('lbl-pb-pushups').innerText = "None Logged"; document.getElementById('lbl-pb-distance').innerText = "None Logged";
+                if(doc.exists) {
+                    const p = doc.data();
+                    if(p.sprint) document.getElementById('lbl-pb-sprint').innerText = `${p.sprint} seconds`;
+                    if(p.longjump) document.getElementById('lbl-pb-longjump').innerText = `${p.longjump} meters`;
+                    if(p.pushups) document.getElementById('lbl-pb-pushups').innerText = `${p.pushups} reps`;
+                    if(p.distance) document.getElementById('lbl-pb-distance').innerText = `${p.distance} meters`;
+                }
+            } catch(e) { console.error(e); }
+        }
+        async function commitFitnessMetricsToFirebase() {
+            const disc = document.getElementById('fit-log-discipline').value; const val = parseFloat(document.getElementById('fit-log-value').value);
+            if(isNaN(val) || val <= 0) { alert("Please enter a valid positive number for your score."); return; }
+            const ref = db.collection("fitness_profiles").doc(loggedUserToken);
+            try {
+                const doc = await ref.get(); let up = {};
+                if(doc.exists) {
+                    const cur = doc.data(); let old = parseFloat(cur[disc]);
+                    if(isNaN(old)) up[disc] = val;
+                    else up[disc] = (disc === 'sprint') ? (val < old ? val : old) : (val > old ? val : old);
+                } else { up[disc] = val; }
+                await ref.set(up, { merge: true }); alert("Your score has been updated in your personal history tracker!"); document.getElementById('fit-log-value').value=""; syncFitnessBestLabelsUI();
+            } catch(e) { alert("Error saving metrics data."); }
+        }
+        function runSportEligibilityEvaluation() {
+            const key = document.getElementById('fit-sport-selector').value; const target = standardSportBenchmarks[key];
+            document.getElementById('sport-benchmarks-readout').innerHTML = `• 100m Sprint: ${target.sprint} seconds or less<br>• Long Jump: ${target.longjump} meters or more<br>• Push-ups: ${target.pushups} reps or more<br>• Distance Run: ${target.distance} meters or more`;
+            const s = parseFloat(document.getElementById('comp-sprint').value); const j = parseFloat(document.getElementById('comp-longjump').value);
+            const p = parseFloat(document.getElementById('comp-pushups').value); const d = parseFloat(document.getElementById('comp-distance').value);
+            const shield = document.getElementById('eligibility-shield-target');
+            if(isNaN(s) || isNaN(j) || isNaN(p) || isNaN(d)) { shield.innerHTML = "Fill in all four score boxes on the left to test team requirements qualification status."; return; }
+            if(s <= target.sprint && j >= target.longjump && p >= target.pushups && d >= target.distance) {
+                shield.innerHTML = `<span style='color:#10B981; font-weight:bold; font-size:1.1rem;'>✓ ELIGIBILITY VERIFIED</span><p style="margin-top:10px; color:#E2E8F0; font-size:0.9rem;">You are physically eligible for this sport.</p>`;
+            } else { shield.innerHTML = `<span style='color:#EF4444; font-weight:bold;'>⚠️ REQUIREMENTS NOT MET</span><p style="font-size:0.85rem; margin:10px 0;">Some typed scores are below the team benchmark line.</p>`; }
+        }
+
+        // --- SEATING PLANNER ---
+        function bootSeatingPlannerSystem() { changeViewFrame('view-seating-app'); renderSavedChartsHistoryList(); }
+        function executeAlgorithmicSeatingPlan() {
+            const cap = parseInt(document.getElementById('seat-input-capacity').value);
+            const names = document.getElementById('seat-input-roster').value;
+            const cName = document.getElementById('seat-input-classname').value;
+            if(isNaN(cap) || cap <= 0 || cName.trim() === "") { alert("Please fill out the class name and total desk capacity count size numbers!"); return; }
+            let studs = names.split(',').map(s => s.trim()).filter(s => s !== "");
+            if(studs.length === 0 || studs.length > cap) { alert("Error: The number of student names exceeds the available desks capacity."); return; }
+            
+            let eG = studs.filter(s => document.getElementById('seat-input-eyes').value.includes(s));
+            let tG = studs.filter(s => document.getElementById('seat-input-tall').value.includes(s) && !eG.includes(s));
+            let rG = studs.filter(s => !eG.includes(s) && !tG.includes(s));
+            
+            for (let i = rG.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [rG[i], rG[j]] = [rG[j], rG[i]]; }
+
+            let separateList = [];
+            const talkInput = document.getElementById('seat-input-talkers').value;
+            if(talkInput.trim() !== "") {
+                talkInput.split(',').forEach(pair => {
+                    const broken = pair.split('-').map(s => s.trim());
+                    if(broken.length === 2) separateList.push(broken);
+                });
+            }
+
+            let blueprint = new Array(cap).fill(null); let idx = 0;
+            eG.forEach(s => { if(idx < cap) blueprint[idx++] = s; });
+            rG.forEach(st => {
+                while(idx < cap) {
+                    let conflict = false;
+                    if(idx > 0 && blueprint[idx - 1]) {
+                        let leftNeighbor = blueprint[idx - 1];
+                        separateList.forEach(p => { if((p[0] === st && p[1] === leftNeighbor) || (p[1] === st && p[0] === leftNeighbor)) conflict = true; });
+                    }
+                    if(conflict && rG.length > 1) { idx += 2; if(idx >= cap) idx = 0; } 
+                    else { if(!blueprint[idx]) { blueprint[idx++] = st; break; } idx++; }
+                    if(idx >= cap) idx = 0;
+                }
+            });
+            let tail = cap - 1;
+            tG.forEach(s => { while(tail >= 0) { if(!blueprint[tail]) { blueprint[tail--] = s; break; } tail--; } });
+            studs.forEach(s => { if(!blueprint.includes(s)) { for(let i=0; i<cap; i++) { if(!blueprint[i]) { blueprint[i] = s; break; } } } });
+
+            currentlyCompiledSeatingPlan = { className: cName, capacity: cap, grid: blueprint };
+            renderSeatingPlanGridDOM(blueprint);
+        }
+        function renderSeatingPlanGridDOM(layout) {
+            const target = document.getElementById('seating-matrix-target'); target.innerHTML = "";
+            const numCrews = 6; let base = Math.floor(layout.length / numCrews); let rem = layout.length % numCrews;
+            let sizes = []; for(let i=0; i<numCrews; i++) sizes.push(base + (i < rem ? 1 : 0));
+            let ptr = 0;
+
+            for(let c=0; c<numCrews; c++) {
+                const cSize = sizes[c]; if(cSize <= 0) continue;
+                const crewBlock = document.createElement('div'); crewBlock.className = "crew-block";
+                const lbl = document.createElement('div'); lbl.className = "crew-label"; lbl.innerText = c < 3 ? `Front Crew ${c+1}` : `Back Crew ${c-2}`;
+                crewBlock.appendChild(lbl);
+
+                let pairs = Math.floor(cSize / 2) * 2; let odd = cSize % 2 !== 0;
+                for(let i=0; i<pairs; i++) {
+                    const s = layout[ptr++]; const d = document.createElement('div'); d.className = "desk-slot";
+                    if(s) d.innerText = s; else { d.className+=" vacant-slot"; d.innerText="Vacant"; }
+                    crewBlock.appendChild(d);
+                }
+                if(odd) {
+                    const s = layout[ptr++]; const d = document.createElement('div'); d.className = "desk-slot single-back-desk";
+                    if(s) d.innerText = s; else { d.className+=" vacant-slot single-back-desk"; d.innerText="Vacant"; }
+                    crewBlock.appendChild(d);
+                }
+                target.appendChild(crewBlock);
+            }
+            document.getElementById('seating-save-actions').style.display = "block";
+        }
+        async function commitArrangementChartToFirebase() {
+            if(!currentlyCompiledSeatingPlan) return;
+            try {
+                await db.collection("seating_plans").add({ teacherId: loggedUserToken, className: currentlyCompiledSeatingPlan.className, capacity: currentlyCompiledSeatingPlan.capacity, grid: currentlyCompiledSeatingPlan.grid });
+                alert("Seating arrangement saved to the database successfully!"); renderSavedChartsHistoryList();
+            } catch(e) { alert("Error saving chart layout."); }
+        }
+        async function renderSavedChartsHistoryList() {
+            try {
+                const snap = await db.collection("seating_plans").where("teacherId", "==", loggedUserToken).get();
+                const logs = document.getElementById('seating-history-logs-target'); logs.innerHTML = "";
+                snap.forEach(doc => {
+                    const c = doc.data(); const card = document.createElement('div'); card.className = "historical-chart-card";
+                    card.innerHTML = `<strong class="tech-font" style="color:#A855F7;">📋 Class: ${c.className}</strong><br><span style="font-size:0.8rem; color:#94A3B8;">Capacity: ${c.capacity} Desks Organized in Crews</span><br><button class="secondary-btn" style="padding:4px 12px; font-size:10px; margin-top:8px;" onclick='restoreSavedChartFromHistory(${JSON.stringify(c.grid)})'>Visualize Crew Layout</button>`;
+                    logs.appendChild(card);
+                });
+            } catch(e) { console.error(e); }
+        }
+        function restoreSavedChartFromHistory(gridData) { renderSeatingPlanGridDOM(gridData); window.scrollTo(0, 200); }
+
+        // --- EVENTPULSE SYSTEM ---
+        function bootEventPulseSystem() {
+            changeViewFrame('view-events-app'); const title = document.getElementById('event-app-title'); const lp = document.getElementById('event-left-pane');
+            if(loggedUserRole === 'teacher') {
+                title.innerText = "Event Management"; document.getElementById('teacher-approvals-section').style.display = "block"; document.getElementById('general-events-header').style.display = "none";
+                lp.innerHTML = `<h3>Create New School Event</h3><label>Event Name:</label><input type='text' id='ev-title'><label>Date & Time:</label><input type='text' id='ev-date'><label>Location / Details:</label><textarea id='ev-desc'></textarea><label>Total Seats Available for Booking:</label><input type='number' id='ev-seats'><label>Are Parents Invited?:</label><select id='ev-parents-allowed'><option value='yes'>Yes, Parents can book seats</option><option value='no'>No, Students and Teachers only</option></select><button class='primary-btn' onclick="submitNewEventToCloud('approved')">Launch Event Live</button>`;
+            } else if(loggedUserRole === 'student') {
+                title.innerText = "School Events"; document.getElementById('teacher-approvals-section').style.display = "none"; document.getElementById('general-events-header').style.display = "block";
+                lp.innerHTML = `<h3>Create Your Own Event</h3><label>Event Name:</label><input type='text' id='ev-title'><label>Date & Time:</label><input type='text' id='ev-date'><label>Location / Details:</label><textarea id='ev-desc'></textarea><label>How many people can join?:</label><input type='number' id='ev-seats'><label>Are Parents Invited?:</label><select id='ev-parents-allowed'><option value='yes'>Yes, Parents can book seats</option><option value='no'>No, Students and Teachers only</option></select><button class='primary-btn' onclick="submitNewEventToCloud('pending')">Ask for Teacher Verification</button>`;
+            } else if(loggedUserRole === 'parent') {
+                title.innerText = "Book Event Tickets"; document.getElementById('teacher-approvals-section').style.display = "none"; document.getElementById('general-events-header').style.display = "block";
+                lp.innerHTML = `<h3>Book Seat Tickets</h3><label>Your Child's Username or Email:</label><input type='text' id='ev-parent-child'><span style='font-size:0.8rem; color:#94A3B8;'>Make sure to type their exact username before clicking the ticket button!</span>`;
+            }
+            renderLiveEventsFeedList();
+        }
+
+        async function submitNewEventToCloud(status) {
+            const t = document.getElementById('ev-title').value; const d = document.getElementById('ev-date').value; const desc = document.getElementById('ev-desc').value; const s = parseInt(document.getElementById('ev-seats').value);
+            const pa = document.getElementById('ev-parents-allowed') ? document.getElementById('ev-parents-allowed').value : 'yes';
+            if(t.trim() === "" || d.trim() === "" || isNaN(s)) { alert("Please fill in all event details!"); return; }
+            try {
+                await db.collection("events").add({ title: t.trim(), date: d.trim(), desc: desc.trim(), maxSeats: s, seatsLeft: s, parentsAllowed: pa, status: status, creator: loggedUserToken, participants: [], reservations: [] });
+                alert("Event loaded successfully!"); document.getElementById('ev-title').value = ""; document.getElementById('ev-date').value = ""; document.getElementById('ev-desc').value = ""; document.getElementById('ev-seats').value = "";
+                renderLiveEventsFeedList();
+            } catch(e) { alert("Error launching event."); }
+        }
+
+        async function renderLiveEventsFeedList() {
+            try {
+                const snap = await db.collection("events").get();
+                const feed = document.getElementById('event-feed-target'); feed.innerHTML = "";
+                const pFeed = document.getElementById('event-pending-feed'); if(pFeed) pFeed.innerHTML = "";
+
+                snap.forEach(doc => {
+                    const ev = doc.data(); const id = doc.id; const card = document.createElement('div'); card.className = "repository-item-card event-accent";
+                    let badge = ev.parentsAllowed === 'no' ? "<span style='color:#EF4444;'>🚫 Students Only</span>" : "<span style='color:#10B981;'>👨‍👩‍👧 Parents Invited</span>";
+                    
+                    if(ev.status === 'pending' && loggedUserRole === 'teacher') {
+                        card.className = "repository-item-card pending-accent";
+                        card.innerHTML = `<strong>⏳ PENDING: ${ev.title}</strong><br><span style="font-size:0.85rem; color:#94A3B8;">Created by: ${ev.creator} | When: ${ev.date}</span><br><p style="font-size:0.85rem; margin:5px 0 10px 0;">${ev.desc}</p><button class='action-btn-green' onclick="approveStudentEvent('${id}')">Verify & Approve</button>`;
+                        pFeed.appendChild(card);
+                    } else if(ev.status === 'approved') {
+                        if(loggedUserRole === 'parent' && ev.parentsAllowed === 'no') return;
+                        let act = "";
+                        if(loggedUserRole === 'parent') act = ev.seatsLeft <= 0 ? "<button class='action-btn-red' disabled>SOLD OUT</button>" : `<button class='action-btn-green' onclick="bookParentTicket('${id}')">Book Seat (-1)</button>`;
+                        else if(loggedUserRole === 'student') act = `<button class='primary-btn' style='padding:6px;' onclick="joinEventAsStudent('${id}')">Participate</button>`;
+                        else if(loggedUserRole === 'teacher') act = `<span class='tech-font' style='color:#00B4D8; font-size:0.8rem;'>${ev.seatsLeft} out of ${ev.maxSeats} Seats Left</span>`;
+                        
+                        card.innerHTML = `<strong class="tech-font" style="color:#A855F7; font-size:1.1rem;">📅 ${ev.title}</strong><br><span style='font-size:0.8rem; color:#94A3B8;'>When: ${ev.date} | ${badge}</span><p style="font-size:0.85rem; margin:5px 0 10px 0;">Info: ${ev.desc || 'No descriptions added.'}</p>${act}`;
+                        feed.appendChild(card);
+                    }
+                });
+            } catch(e) { console.error(e); }
+        }
+
+        async function approveStudentEvent(id) { await db.collection("events").doc(id).update({ status: 'approved' }); renderLiveEventsFeedList(); }
+        async function joinEventAsStudent(id) { await db.collection("events").doc(id).update({ participants: firebase.firestore.FieldValue.arrayUnion(loggedUserToken) }); alert("You have joined this event successfully!"); }
+        async function bookParentTicket(id) {
+            const child = document.getElementById('ev-parent-child').value.trim().toLowerCase();
+            if(!child) { alert("Please type your Child's Username or Email on the left side first!"); return; }
+            const sDoc = await db.collection("users").doc(child).get();
+            if(!sDoc.exists || sDoc.data().role !== 'student') { alert("Error: No student profile found with that username! Make sure you typed their exact login name, and that they have already logged in as a student."); return; }
+            
+            const ref = db.collection("events").doc(id); const snap = await ref.get();
+            if(snap.exists && snap.data().seatsLeft > 0) {
+                await ref.update({ seatsLeft: snap.data().seatsLeft - 1, reservations: firebase.firestore.FieldValue.arrayUnion(`Parent: ${loggedUserToken} -> ${child}`) });
+                alert(`Success! 1 Ticket has been reserved for ${child}.`); bootEventPulseSystem();
+            } else { alert("Sorry, this event is completely sold out."); }
+        }
+    </script>
+</body>
+</html>
