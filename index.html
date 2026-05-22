@@ -5,45 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>School Hub</title>
     <style>
-        /* --- CORE TECHNICAL THEME VARIABLES --- */
+        /* --- HIGH-END MODERN SYSTEM TOKENS --- */
         :root {
-            --bg-body: #0A0D14;
-            --bg-grid: rgba(0, 180, 216, 0.02);
-            --bg-container: #0F1219;
-            --bg-panel: #121620;
-            --border-primary: #1E293B;
-            --border-secondary: #2A3441;
-            --text-main: #E2E8F0;
+            --bg-body: #0B0F19;
+            --bg-grid: rgba(0, 180, 216, 0.015);
+            --bg-container: rgba(21, 27, 43, 0.7);
+            --bg-panel: #161F32;
+            --border-primary: rgba(255, 255, 255, 0.08);
+            --border-secondary: rgba(255, 255, 255, 0.12);
+            --text-main: #F1F5F9;
             --text-muted: #94A3B8;
             --accent-cyan: #00B4D8;
             --accent-cyan-hover: #00E5FF;
-            --btn-sec-border: #334155;
+            --btn-sec-border: rgba(255, 255, 255, 0.15);
             --btn-sec-text: #94A3B8;
-            --card-hover: #181D29;
-            --desk-bg: #161B26;
-            --shadow-alpha: rgba(0, 0, 0, 0.5);
+            --card-hover: #1E2B44;
+            --desk-bg: #1B263B;
+            --shadow-glass: rgba(0, 0, 0, 0.4);
+            --blur-glass: blur(16px);
         }
 
-        /* --- WARM MATTE READING LIGHT MODE --- */
+        /* --- PREMIUM READING COMFORT LIGHT MODE --- */
         body.light-mode {
-            --bg-body: #F5F2EB;          /* Warm matte almond paper tone - zero eye strain */
+            --bg-body: #F4F1EA;          /* Soft matte vintage paper tone - no eye fatigue */
             --bg-grid: rgba(2, 132, 199, 0.02);
-            --bg-container: #FDFBF7;     /* Soft ivory interior container */
-            --bg-panel: #EAE5D9;         /* Smooth, muted slate-tinted separator zones */
-            --border-primary: #D1C9B7;   /* Subtle, non-intrusive borders */
-            --border-secondary: #A39A85;
-            --text-main: #24292F;        /* Soft charcoal text for reading comfort */
-            --text-muted: #57606A;       /* Muted ash secondary labels */
-            --accent-cyan: #0369A1;      /* Deep engineering blue */
-            --accent-cyan-hover: #0284C7;
-            --btn-sec-border: #A39A85;
-            --btn-sec-text: #57606A;
-            --card-hover: #E2DAC8;       /* Smooth, natural organic card hover state */
-            --desk-bg: #EFEBE1;          /* Cozy desk chart slot highlights */
-            --shadow-alpha: rgba(60, 50, 30, 0.06);
+            --bg-container: rgba(253, 251, 247, 0.9);     
+            --bg-panel: #EAE3D2;         /* Smooth warm-tinted separation blocks */
+            --border-primary: rgba(0, 0, 0, 0.08);   
+            --border-secondary: rgba(0, 0, 0, 0.15);
+            --text-main: #1E293B;        /* High-contrast soft charcoal text */
+            --text-muted: #64748B;       
+            --accent-cyan: #0284C7;      /* Clean corporate blue */
+            --accent-cyan-hover: #0369A1;
+            --btn-sec-border: rgba(0, 0, 0, 0.18);
+            --btn-sec-text: #475569;
+            --card-hover: #DFD7C2;       
+            --desk-bg: #E3DAC9;          
+            --shadow-glass: rgba(60, 50, 30, 0.05);
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;700&display=swap');
 
         * {
             box-sizing: border-box;
@@ -61,12 +62,12 @@
             font-family: 'Inter', system-ui, sans-serif;
             min-height: 100vh;
             padding: 20px;
-            transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .tech-font { font-family: 'Fira Code', monospace; }
 
-        /* --- HEADER PANEL --- */
+        /* --- MASTER HEADER PANEL --- */
         .master-brand-header {
             width: 100%;
             max-width: 1200px;
@@ -74,9 +75,10 @@
             background-color: var(--bg-panel); 
             border: 1px solid var(--border-primary);
             border-left: 4px solid var(--accent-cyan);
-            box-shadow: 0 6px 20px var(--shadow-alpha);
+            backdrop-filter: var(--blur-glass);
+            box-shadow: 0 8px 32px var(--shadow-glass);
             padding: 15px 25px;
-            border-radius: 8px;
+            border-radius: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -87,7 +89,7 @@
             text-transform: uppercase;
             letter-spacing: 4px;
             color: var(--accent-cyan);
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .header-actions {
@@ -101,19 +103,21 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: 600;
         }
 
-        /* --- FRAME CONTAINER --- */
+        /* --- MAIN CONTENT FRAME --- */
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             background-color: var(--bg-container);
+            backdrop-filter: var(--blur-glass);
             border: 1px solid var(--border-primary);
             padding: 30px;
-            border-radius: 12px;
+            border-radius: 16px;
             min-height: 70vh;
-            box-shadow: 0 10px 40px var(--shadow-alpha);
+            box-shadow: 0 16px 48px var(--shadow-glass);
         }
 
         .view-frame { display: none; }
@@ -125,6 +129,7 @@
             margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 2px;
+            font-weight: 700;
         }
 
         h3 {
@@ -135,6 +140,7 @@
             letter-spacing: 1px;
             border-bottom: 1px solid var(--border-primary);
             padding-bottom: 8px;
+            font-weight: 600;
         }
 
         p {
@@ -144,45 +150,61 @@
             font-size: 0.95rem;
         }
 
-        /* --- INPUT CONTROLS --- */
+        /* --- FORMS & INPUT MODULES --- */
         input[type="text"], input[type="password"], input[type="number"], textarea, select {
             width: 100%;
             padding: 12px;
             margin: 8px 0 20px 0;
-            border-radius: 6px;
+            border-radius: 8px;
             border: 1px solid var(--border-secondary);
-            background-color: var(--bg-body);
+            background-color: rgba(0, 0, 0, 0.2);
             color: var(--text-main);
             font-family: 'Fira Code', monospace;
             font-size: 14px;
-            transition: border-color 0.2s ease;
+            transition: all 0.2s ease;
+        }
+        body.light-mode input, body.light-mode textarea, body.light-mode select {
+            background-color: rgba(0, 0, 0, 0.03);
         }
 
         input:focus, textarea:focus, select:focus {
             border-color: var(--accent-cyan);
             outline: none;
-            box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.1);
+            box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.2);
         }
 
-        /* --- BUTTON STATES --- */
+        .password-toggle-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: -10px 0 25px 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        /* --- SYSTEM PLATFORM BUTTONS --- */
         button {
-            padding: 10px 24px;
-            border-radius: 6px;
+            padding: 11px 24px;
+            border-radius: 8px;
             border: none;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 12px;
             font-family: 'Fira Code', monospace;
         }
 
+        button:active { transform: scale(0.98); }
+
         button.primary-btn {
             background-color: var(--accent-cyan);
-            color: var(--bg-container);
+            color: var(--bg-body);
             width: 100%;
             margin: 10px 0;
+            box-shadow: 0 4px 12px rgba(0, 180, 216, 0.15);
         }
         button.primary-btn:hover { background-color: var(--accent-cyan-hover); }
 
@@ -194,13 +216,13 @@
         button.secondary-btn:hover {
             color: var(--text-main);
             border-color: var(--text-main);
-            background-color: var(--bg-body);
+            background-color: rgba(255, 255, 255, 0.02);
         }
 
-        button.action-btn-green { background-color: #10B981; color: #FFFFFF; padding: 6px 14px; margin-right: 8px;}
+        button.action-btn-green { background-color: #10B981; color: #FFFFFF; padding: 6px 14px; margin-right: 8px; border-radius: 6px;}
         button.action-btn-green:hover { background-color: #059669; }
 
-        button.action-btn-red { background-color: #EF4444; color: #FFFFFF; padding: 6px 14px; margin-right: 8px;}
+        button.action-btn-red { background-color: #EF4444; color: #FFFFFF; padding: 6px 14px; margin-right: 8px; border-radius: 6px;}
         button.action-btn-red:hover { background-color: #DC2626; }
 
         .top-action-bar {
@@ -212,7 +234,7 @@
             border-bottom: 1px solid var(--border-primary);
         }
 
-        /* --- LOGIN APP LAYER --- */
+        /* --- LOGIN TAB CONFIGURATION MATRIX --- */
         .login-box { max-width: 500px; margin: 20px auto; }
         .login-tabs {
             display: flex;
@@ -224,8 +246,8 @@
             padding: 12px;
             text-align: center;
             background-color: var(--bg-panel);
-            border: 1px solid var(--border-secondary);
-            border-radius: 6px;
+            border: 1px solid var(--border-primary);
+            border-radius: 8px;
             cursor: pointer;
             color: var(--text-muted);
             font-weight: 600;
@@ -234,7 +256,7 @@
         .login-tab:hover { background-color: var(--border-primary); color: var(--text-main); }
         .login-tab.active {
             background-color: var(--accent-cyan);
-            color: var(--bg-container);
+            color: var(--bg-body);
             border-color: var(--accent-cyan);
         }
         .login-form-section { display: none; }
@@ -246,7 +268,7 @@
             gap: 15px;
         }
 
-        /* --- SYSTEM ROUTER GRID SYSTEM --- */
+        /* --- DASHBOARD CONTROL LAYOUT --- */
         .dashboard-layout {
             display: grid;
             grid-template-columns: 280px 1fr;
@@ -258,15 +280,16 @@
             background-color: var(--bg-panel);
             border: 1px solid var(--border-primary);
             border-top: 4px solid var(--accent-cyan);
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 20px;
             text-align: center;
             height: fit-content;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
 
         .profile-box .avatar {
             font-size: 32px;
-            font-weight: bold;
+            font-weight: 700;
             color: var(--accent-cyan);
             margin-bottom: 15px;
             background-color: var(--bg-body);
@@ -296,7 +319,7 @@
         .notifications-console {
             background-color: var(--bg-body);
             border: 1px solid var(--border-primary);
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 20px;
             margin-bottom: 25px;
         }
@@ -305,9 +328,9 @@
         .alert-item {
             padding: 10px 15px;
             background-color: var(--bg-panel);
-            border-left: 3px solid #10B981;
+            border-left: 4px solid #10B981;
             margin-bottom: 10px;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 0.9rem;
             color: var(--text-main);
             border-top: 1px solid var(--border-primary);
@@ -324,12 +347,12 @@
         }
         .module-selection-card {
             background-color: var(--bg-panel);
-            border: 1px solid var(--border-secondary);
-            border-radius: 8px;
+            border: 1px solid var(--border-primary);
+            border-radius: 12px;
             padding: 25px;
             cursor: pointer;
             text-align: center;
-            transition: all 0.2s ease;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -337,8 +360,8 @@
         .module-selection-card:hover {
             border-color: var(--accent-cyan);
             background-color: var(--card-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px var(--shadow-alpha);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
         }
         .module-icon-box { 
             margin: 0 auto 15px auto; 
@@ -351,7 +374,7 @@
         }
         .module-icon-box svg { width: 100%; height: 100%; fill: currentColor; }
 
-        /* --- APP DISPLAY WORKSPACES --- */
+        /* --- VIEW PANES WORKSPACES --- */
         .split-workspace {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -362,7 +385,7 @@
         .workspace-pane {
             background-color: var(--bg-panel);
             border: 1px solid var(--border-primary);
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 25px;
         }
 
@@ -370,10 +393,9 @@
             background-color: var(--bg-body);
             border: 1px solid var(--border-primary);
             padding: 15px;
-            border-radius: 6px;
+            border-radius: 8px;
             margin-bottom: 15px;
             border-left: 4px solid var(--accent-cyan);
-            box-shadow: 0 2px 8px var(--shadow-alpha);
         }
         .repository-item-card.pending-accent { border-left-color: #F59E0B; }
 
@@ -381,7 +403,7 @@
             background-color: var(--bg-body);
             border: 1px solid var(--border-primary);
             padding: 12px;
-            border-radius: 6px;
+            border-radius: 8px;
             margin-bottom: 10px;
         }
 
@@ -391,11 +413,14 @@
             gap: 15px;
             margin-top: 20px;
         }
+        @media(max-width: 900px) { .seating-output-crews { grid-template-columns: 1fr 1fr; } }
+        @media(max-width: 600px) { .seating-output-crews { grid-template-columns: 1fr; } }
+
         .crew-block {
             background-color: var(--bg-body);
             border: 1px dashed var(--border-secondary);
-            border-radius: 8px;
-            padding: 10px;
+            border-radius: 10px;
+            padding: 12px;
             display: grid;
             grid-template-columns: 1fr 1fr; 
             gap: 8px;
@@ -408,12 +433,13 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 4px;
+            font-weight: 600;
         }
         .desk-slot {
             background-color: var(--desk-bg);
             border: 1px solid var(--border-primary);
             padding: 10px 5px;
-            border-radius: 4px;
+            border-radius: 6px;
             text-align: center;
             color: var(--accent-cyan);
             font-size: 0.85rem;
@@ -422,7 +448,7 @@
             align-items: center;
             justify-content: center;
         }
-        .desk-slot.vacant-slot { color: #94A3B8; border-style: dotted; background-color: transparent; }
+        .desk-slot.vacant-slot { color: #475569; border-style: dotted; background-color: transparent; }
         .desk-slot.single-back-desk { grid-column: span 2; max-width: 50%; margin: 0 auto; width: 100%; }
 
     </style>
@@ -469,6 +495,7 @@
                             <input type="text" id="stu-sec" placeholder="e.g. A">
                         </div>
                     </div>
+                    
                     <button class="primary-btn" onclick="executeLogin('student')">Log In As Student</button>
                 </div>
 
@@ -481,13 +508,14 @@
                     <div class="split-inputs">
                         <div>
                             <label>Verification Code:</label>
-                            <input type="password" id="tch-code" placeholder="Enter 4-digit code">
+                            <input type="password" id="tch-code" placeholder="Enter code">
                         </div>
                         <div>
                             <label>Your Subject:</label>
                             <input type="text" id="tch-subj" placeholder="e.g. History">
                         </div>
                     </div>
+
                     <button class="primary-btn" onclick="executeLogin('teacher')">Log In As Teacher</button>
                 </div>
 
@@ -502,10 +530,13 @@
 
                     <label>Your Child's Exact Username:</label>
                     <input type="text" id="par-child" placeholder="Enter your student's username">
+
                     <button class="primary-btn" onclick="executeLogin('parent')">Log In As Parent</button>
                 </div>
+
             </div>
         </div>
+
 
         <div id="view-main-dashboard" class="view-frame">
             <div class="top-action-bar">
@@ -515,6 +546,7 @@
             <div class="dashboard-layout">
                 <div class="profile-box">
                     <div class="avatar" id="dash-avatar">U</div>
+                    
                     <div class="profile-data-row">
                         <span>Username:</span>
                         <span class="profile-data-value tech-font" id="dash-user-id">...</span>
@@ -523,10 +555,12 @@
                         <span>Profile:</span>
                         <span class="profile-data-value tech-font" id="dash-user-role">...</span>
                     </div>
+
                     <div class="profile-data-row" id="dash-extra-info-container" style="display:none;">
                         <span id="dash-extra-label">Info:</span>
                         <span class="profile-data-value tech-font" id="dash-extra-value">...</span>
                     </div>
+                    
                     <button class="secondary-btn" style="width:100%; margin-top:20px; border-color:#EF4444; color:#EF4444;" onclick="triggerSystemLogout()">Log Out</button>
                 </div>
 
@@ -539,10 +573,12 @@
                     </div>
 
                     <h3 style="margin-bottom:15px; color:var(--accent-cyan); border:none;">Your Apps</h3>
-                    <div class="apps-selection-grid" id="dash-apps-grid"></div>
+                    <div class="apps-selection-grid" id="dash-apps-grid">
+                        </div>
                 </div>
             </div>
         </div>
+
 
         <div id="view-lost-found-app" class="view-frame">
             <div class="top-action-bar">
@@ -580,15 +616,16 @@
             <div class="top-action-bar">
                 <h2>FitTrack App</h2>
                 <div style="display:flex; gap:10px;">
-                    <button class="secondary-btn" id="fit-nav-btn-elig" onclick="toggleFitnessSubMode('eligibility')">Requirements</button>
-                    <button class="secondary-btn" id="fit-nav-btn-pers" onclick="toggleFitnessSubMode('personal')">Personal Records</button>
+                    <button class="secondary-btn" id="fit-nav-btn-elig" onclick="toggleFitnessSubMode('eligibility')">School Team Eligibility</button>
+                    <button class="secondary-btn" id="fit-nav-btn-pers" onclick="toggleFitnessSubMode('personal')">Personal Data</button>
                 </div>
                 <button class="secondary-btn" onclick="fallbackToDashboardRoot()">Home</button>
             </div>
             
             <div id="fit-sub-eligibility" class="split-workspace">
                 <div class="workspace-pane">
-                    <h3>Team Benchmarks</h3>
+                    <h3>Compare Scores with Team Requirements</h3>
+                    <label>Select a School Team:</label>
                     <select id="fit-sport-selector" onchange="runSportEligibilityEvaluation()">
                         <option value="cricket">Cricket Team</option>
                         <option value="football">Football Team</option>
@@ -596,6 +633,7 @@
                     </select>
                     <div id="sport-benchmarks-readout" class="tech-font" style="background-color:var(--bg-body); border:1px solid var(--border-primary); padding:15px; border-radius:6px; font-size:0.8rem; line-height: 1.8; margin-bottom: 20px; color:var(--accent-cyan);"></div>
                     
+                    <h3 style="color:var(--text-main); font-size: 1rem;">Type Your Scores Here to Compare:</h3>
                     <label>Your 100m Dash Time (Seconds):</label>
                     <input type="number" step="0.1" id="comp-sprint" placeholder="e.g., 14.2" onkeyup="runSportEligibilityEvaluation()">
                     <label>Your Long Jump Distance (Meters):</label>
@@ -608,7 +646,7 @@
                 <div class="workspace-pane">
                     <h3>Eligibility Result</h3>
                     <div id="eligibility-shield-target" style="background-color:var(--bg-body); border:1px dashed var(--border-secondary); padding:25px; border-radius:8px; text-align:center; margin-top:20px;">
-                        Type your scores on the left to verify metrics.
+                        Type your scores on the left to test your eligibility.
                     </div>
                 </div>
             </div>
@@ -616,6 +654,7 @@
             <div id="fit-sub-personal" class="split-workspace" style="display:none;">
                 <div class="workspace-pane">
                     <h3>Save Personal Best Scores</h3>
+                    <label>Choose Category:</label>
                     <select id="fit-log-discipline">
                         <option value="sprint">100m Sprint (Seconds)</option>
                         <option value="longjump">Long Jump (Meters)</option>
@@ -650,25 +689,25 @@
                     <input type="text" id="seat-input-classname" placeholder="e.g., Grade 9 History">
                     <label>Total Number of Desks in Class:</label>
                     <input type="number" id="seat-input-capacity" placeholder="32">
-                    <label>Names of All Students (Separate with commas):</label>
+                    <label>Names of All Students (Separate names with commas):</label>
                     <textarea id="seat-input-roster" rows="3" placeholder="Rahul, Priya, Amit..."></textarea>
                     
-                    <h3 style="color:#A855F7; border-top:1px solid var(--border-primary); padding-top:15px; margin-top:15px;">Advanced Sorting Rules</h3>
-                    <label>Separation Rule (Name1-Name2):</label>
+                    <h3 style="color:#A855F7; border-top:1px solid var(--border-primary); padding-top:15px; margin-top:15px;">Optional Settings</h3>
+                    <label>Students who talk a lot and should NOT sit together (Format: Name1-Name2):</label>
                     <input type="text" id="seat-input-talkers" placeholder="e.g., Rahul-Amit">
-                    <label>Tall Students (Back Crews):</label>
+                    <label>Tall children who can sit in the Back 3 Crews (Separate with commas):</label>
                     <input type="text" id="seat-input-tall" placeholder="e.g., Vikram, Kabir">
-                    <label>Vision Front Row Needs:</label>
+                    <label>Children with eyesight problems who must sit in the Front 3 Crews (Separate with commas):</label>
                     <input type="text" id="seat-input-eyes" placeholder="e.g., Ananya, Diya">
                     <button class="primary-btn" onclick="executeAlgorithmicSeatingPlan()">Make Seating Arrangement</button>
                 </div>
                 <div class="workspace-pane">
                     <h3>Seating Chart Output</h3>
-                    <div style="background-color:var(--accent-cyan); color:var(--bg-container); text-align:center; padding:5px; font-weight:bold; font-size:0.75rem; letter-spacing:4px; border-radius:4px; margin-bottom: 15px;">
+                    <div style="background-color:var(--accent-cyan); color:var(--bg-body); text-align:center; padding:5px; font-weight:bold; font-size:0.75rem; letter-spacing:4px; border-radius:4px; margin-bottom: 15px;">
                         CHALKBOARD / PROJECTOR SCREEN HERE
                     </div>
                     <div id="seating-matrix-target" class="seating-output-crews">
-                        <div style="color:var(--text-muted); font-style:italic; grid-column:span 3; text-align:center;">Awaiting layout generation parameters...</div>
+                        <div style="color:var(--text-muted); font-style:italic; grid-column:span 3; text-align:center;">Awaiting settings setup...</div>
                     </div>
                     <div id="seating-save-actions" style="display:none; margin-top:20px;">
                         <button class="primary-btn" style="background-color:#10B981; color:#FFFFFF;" onclick="commitArrangementChartToFirebase()">Save Seating Arrangement</button>
@@ -685,7 +724,8 @@
                 <button class="secondary-btn" onclick="fallbackToDashboardRoot()">Home</button>
             </div>
             <div class="split-workspace">
-                <div class="workspace-pane" id="event-left-pane"></div>
+                <div class="workspace-pane" id="event-left-pane">
+                    </div>
                 <div class="workspace-pane">
                     <div id="teacher-approvals-section" style="display:none;">
                         <h3 style="color:#F59E0B;">Needs Teacher Approval</h3>
@@ -721,7 +761,7 @@
         let activeLostFoundCache = [];
         let currentlyCompiledSeatingPlan = null;
         
-        // --- SVG VECTOR ENGINE ICONS ---
+        // --- SVG ICONS CONSTANTS ---
         const ICON_BOX = `<svg viewBox="0 0 24 24"><path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18s-.41-.06-.57-.18l-7.9-4.44A.991.991 0 0 1 3 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44c.16-.12.36-.18.57-.18s.41.06.57.18l7.9 4.44c.32.17.53.5.53.88v9zM12 4.15L6.04 7.5L12 10.85l5.96-3.35L12 4.15zM5 15.91l6 3.38v-6.71L5 9.21v6.7zM13 19.29l6-3.38V9.21l-6 3.38v6.7z"/></svg>`;
         const ICON_FIT = `<svg viewBox="0 0 24 24"><path d="M13.49 5.48c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 13.9l1-4.4 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1l-5.2 2.2v4.7h2v-3.4l1.8-.7-1.6 8.1-4.9-1-.4 2 6.7 1.4 1.1-5.4z"/></svg>`;
         const ICON_EVENT = `<svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>`;
@@ -759,25 +799,25 @@
             let idField = document.getElementById(`${pfx}-id`).value.trim().toLowerCase();
             let passField = document.getElementById(`${pfx}-pass`).value.trim();
             
-            if(idField === "" || passField === "") { alert("Please complete credentials."); return; }
+            if(idField === "" || passField === "") { alert("Please fill in your Username and Password."); return; }
             let metaData = {};
 
             if(role === 'student') {
                 const grade = document.getElementById('stu-grade').value.trim();
                 const section = document.getElementById('stu-sec').value.trim();
-                if(!grade || !section) { alert("Missing Class Details"); return; }
-                metaData = { grade, section };
+                if(grade === "" || section === "") { alert("Please fill in your Grade and Section."); return; }
+                metaData = { grade: grade, section: section };
             } else if (role === 'teacher') {
                 const code = document.getElementById('tch-code').value.trim();
                 const subj = document.getElementById('tch-subj').value.trim();
-                if(code !== "2345") { alert("Invalid Verification Code."); return; }
-                if(!subj) { alert("Please provide subject line."); return; }
+                if(code !== "2345") { alert("Incorrect Teacher Verification Code."); return; }
+                if(subj === "") { alert("Please fill in your Subject."); return; }
                 metaData = { subject: subj };
             } else if (role === 'parent') {
                 const code = document.getElementById('par-code').value.trim();
                 const child = document.getElementById('par-child').value.trim();
-                if(code !== "234") { alert("Invalid Parent Code."); return; }
-                if(!child) { alert("Please specify child profile name."); return; }
+                if(code !== "234") { alert("Incorrect Parent Access Code."); return; }
+                if(child === "") { alert("Please type your child's exact username."); return; }
                 metaData = { childName: child };
             }
 
@@ -785,10 +825,11 @@
             try {
                 const docSnap = await userDocRef.get();
                 if(docSnap.exists) {
-                    if(docSnap.data().password === passField) {
+                    const profileData = docSnap.data();
+                    if(profileData.password === passField) {
                         await userDocRef.update({ ...metaData, role: role });
                         loggedUserToken = idField; loggedUserRole = role; loadMainDashboard();
-                    } else { alert("Incorrect password."); }
+                    } else { alert("Incorrect password. Please try again."); }
                 } else {
                     await userDocRef.set({ password: passField, role: role, dismissedItems: [], ...metaData });
                     loggedUserToken = idField; loggedUserRole = role; loadMainDashboard();
@@ -808,37 +849,37 @@
 
         async function loadMainDashboard() {
             changeViewFrame('view-main-dashboard');
-            let friendlyRole = friendlyRole = loggedUserRole.charAt(0).toUpperCase() + loggedUserRole.slice(1);
+            let friendlyRole = loggedUserRole.charAt(0).toUpperCase() + loggedUserRole.slice(1);
             document.getElementById('session-tag').innerText = `Logged In: ${friendlyRole}`;
             document.getElementById('session-tag').style.color = "#10B981";
             document.getElementById('dash-avatar').innerText = loggedUserToken.charAt(0);
             document.getElementById('dash-user-id').innerText = loggedUserToken;
             document.getElementById('dash-user-role').innerText = friendlyRole;
             
-            const extraBox = document.getElementById('dash-extra-info-container');
+            const extraInfoBox = document.getElementById('dash-extra-info-container');
             const extraLabel = document.getElementById('dash-extra-label');
             const extraValue = document.getElementById('dash-extra-value');
             
             try {
                 const pData = (await db.collection("users").doc(loggedUserToken).get()).data();
                 if(loggedUserRole === 'student' && pData.grade) {
-                    extraBox.style.display = "flex"; extraLabel.innerText = "Class:"; extraValue.innerText = `${pData.grade}-${pData.section}`;
+                    extraInfoBox.style.display = "flex"; extraLabel.innerText = "Class:"; extraValue.innerText = `${pData.grade}-${pData.section}`;
                 } else if(loggedUserRole === 'teacher' && pData.subject) {
-                    extraBox.style.display = "flex"; extraLabel.innerText = "Subject:"; extraValue.innerText = pData.subject;
+                    extraInfoBox.style.display = "flex"; extraLabel.innerText = "Subject:"; extraValue.innerText = pData.subject;
                 } else if(loggedUserRole === 'parent' && pData.childName) {
-                    extraBox.style.display = "flex"; extraLabel.innerText = "Child:"; extraValue.innerText = pData.childName;
-                } else { extraBox.style.display = "none"; }
-            } catch(e) { extraBox.style.display = "none"; }
+                    extraInfoBox.style.display = "flex"; extraLabel.innerText = "Child:"; extraValue.innerText = pData.childName;
+                } else { extraInfoBox.style.display = "none"; }
+            } catch(e) { extraInfoBox.style.display = "none"; }
 
             const appsGrid = document.getElementById('dash-apps-grid');
             if(loggedUserRole === 'student') {
                 appsGrid.innerHTML = `
-                    <div class="module-selection-card" onclick="bootLostFoundSystem()"><div class="module-icon-box">${ICON_BOX}</div><h3>Lost & Found</h3></div>
+                    <div class="module-selection-card" onclick="bootLostFoundSystem()"><div class="module-icon-box" style="color:var(--accent-cyan);">${ICON_BOX}</div><h3>Lost & Found</h3></div>
                     <div class="module-selection-card" onclick="bootFitnessSystem()"><div class="module-icon-box" style="color:#A855F7;">${ICON_FIT}</div><h3>FitTrack</h3></div>
                     <div class="module-selection-card" onclick="bootEventPulseSystem()"><div class="module-icon-box" style="color:#10B981;">${ICON_EVENT}</div><h3>School Events</h3></div>`;
             } else if(loggedUserRole === 'teacher') {
                 appsGrid.innerHTML = `
-                    <div class="module-selection-card" onclick="bootLostFoundSystem()"><div class="module-icon-box">${ICON_BOX}</div><h3>Lost & Found</h3></div>
+                    <div class="module-selection-card" onclick="bootLostFoundSystem()"><div class="module-icon-box" style="color:var(--accent-cyan);">${ICON_BOX}</div><h3>Lost & Found</h3></div>
                     <div class="module-selection-card" onclick="bootSeatingPlannerSystem()"><div class="module-icon-box" style="color:#A855F7;">${ICON_GRID}</div><h3>Seating Planner</h3></div>
                     <div class="module-selection-card" onclick="bootEventPulseSystem()"><div class="module-icon-box" style="color:#10B981;">${ICON_EVENT}</div><h3>Event Management</h3></div>`;
             } else if(loggedUserRole === 'parent') {
@@ -866,18 +907,18 @@
                 });
 
                 if(loggedUserRole === 'student') {
-                    if(activeEvents > 0) notifications.push(`<div class='alert-item'>📅 There are ${activeEvents} verified live school events active.</div>`);
-                    if(lostItems > 0) notifications.push(`<div class='alert-item warning'>📦 ${lostItems} items reported missing on ledger logs.</div>`);
+                    if(activeEvents > 0) notifications.push(`<div class='alert-item'>📅 There are ${activeEvents} active school events happening now.</div>`);
+                    if(lostItems > 0) notifications.push(`<div class='alert-item warning'>📦 ${lostItems} items have been reported missing by students.</div>`);
                 } else if(loggedUserRole === 'teacher') {
-                    if(pendingEvents > 0) notifications.push(`<div class='alert-item urgent'>⚠️ Action Needed: ${pendingEvents} pending approvals pending.</div>`);
+                    if(pendingEvents > 0) notifications.push(`<div class='alert-item urgent'>⚠️ You have ${pendingEvents} student events waiting for your approval.</div>`);
                 } else if(loggedUserRole === 'parent' && parentBookable > 0) {
-                    notifications.push(`<div class='alert-item'>🎟️ ${parentBookable} open functions available for reservation.</div>`);
+                    notifications.push(`<div class='alert-item'>🎟️ There are ${parentBookable} school events open for parent ticket booking.</div>`);
                 }
-                notifBox.innerHTML = notifications.length === 0 ? "<div class='alert-item' style='border-color:#475569;'>No active log notifications.</div>" : notifications.join("");
-            } catch(e) { notifBox.innerHTML = "<div class='alert-item urgent'>Notification synchronizer exception.</div>"; }
+                notifBox.innerHTML = notifications.length === 0 ? "<div class='alert-item' style='border-color:#475569;'>All caught up! No active updates to display.</div>" : notifications.join("");
+            } catch(e) { notifBox.innerHTML = "<div class='alert-item urgent'>Error loading notifications feed list.</div>"; }
         }
 
-        // --- LOST & FOUND APP ---
+        // --- LOST & FOUND ---
         function bootLostFoundSystem() { changeViewFrame('view-lost-found-app'); renderLFLedgerUIFromCache(); }
         async function renderLFLedgerUIFromCache() {
             try {
@@ -892,7 +933,7 @@
                     if(item.type === 'lost') {
                         if(personalDismissedList.includes(item.id)) return; 
                         const card = document.createElement('div'); card.className = "repository-item-card";
-                        card.innerHTML = `<strong>🚨 LOST: ${item.name}</strong><br><span style="font-size:0.85rem; color:var(--text-muted);">At: ${item.location}</span><br><p style="font-size:0.85rem; margin:4px 0 10px 0;">${item.desc || 'No descriptions.'}</p><button class="action-btn-green" onclick="processLFOptFoundUpdate('${item.id}')">Found</button><button class="action-btn-red" onclick="processLFOptDismissUpdate('${item.id}')">Dismiss</button>`;
+                        card.innerHTML = `<strong>🚨 LOST: ${item.name}</strong><br><span style="font-size:0.85rem; color:var(--text-muted);">Where lost: ${item.location}</span><br><p style="font-size:0.85rem; margin:4px 0 10px 0;">Description: ${item.desc || 'No description added.'}</p><button class="action-btn-green" onclick="processLFOptFoundUpdate('${item.id}')">Found</button><button class="action-btn-red" onclick="processLFOptDismissUpdate('${item.id}')">Dismiss</button>`;
                         lostFeedRoot.appendChild(card);
                     } else if(item.type === 'turned_in') { activeLostFoundCache.push(item); }
                 });
@@ -901,10 +942,10 @@
         }
         function renderLFExplorePaneGrid(arrayData) {
             const exploreRoot = document.getElementById('lf-explore-feed-root'); exploreRoot.innerHTML = "";
-            if(arrayData.length === 0) { exploreRoot.innerHTML = "<p style='font-style:italic;'>No found elements registered.</p>"; return; }
+            if(arrayData.length === 0) { exploreRoot.innerHTML = "<p style='font-style:italic;'>No found items registered yet.</p>"; return; }
             arrayData.forEach(item => {
                 const card = document.createElement('div'); card.className = "repository-item-card";
-                card.innerHTML = `<strong>📦 FOUND: ${item.name}</strong><br><span style="font-size:0.85rem; color:var(--text-muted);">Location: ${item.location}</span><p style="font-size:0.85rem; margin:4px 0 10px 0;">${item.desc || ''}</p><button class="action-btn-green" onclick="processLFClaimSequence('${item.id}', '${item.name}', '${item.location}')">Claim Item</button>`;
+                card.innerHTML = `<strong>📦 FOUND: ${item.name}</strong><br><span style="font-size:0.85rem; color:var(--text-muted);">Where found: ${item.location}</span><p style="font-size:0.85rem; margin:4px 0 10px 0;">Description: ${item.desc || ''}</p><button class="action-btn-green" onclick="processLFClaimSequence('${item.id}', '${item.name}', '${item.location}')">Claim Item</button>`;
                 exploreRoot.appendChild(card);
             });
         }
@@ -916,21 +957,21 @@
         async function processLFNamedDispatch() {
             const type = document.getElementById('lf-input-type').value; const name = document.getElementById('lf-input-name').value;
             const loc = document.getElementById('lf-input-location').value; const desc = document.getElementById('lf-input-desc').value;
-            if(!name.trim() || !loc.trim()) { alert("Missing fields!"); return; }
+            if(!name.trim() || !loc.trim()) { alert("Please fill in the Item Name and Location!"); return; }
             try {
                 await db.collection("items").add({ type, name: name.trim(), location: loc.trim(), desc: desc.trim(), claimed: false });
-                alert("Report dispatched."); document.getElementById('lf-input-name').value = ""; document.getElementById('lf-input-location').value = ""; document.getElementById('lf-input-desc').value = "";
+                alert("Item saved successfully!"); document.getElementById('lf-input-name').value = ""; document.getElementById('lf-input-location').value = ""; document.getElementById('lf-input-desc').value = "";
                 renderLFLedgerUIFromCache();
-            } catch(e) { alert("Error dispatching data."); }
+            } catch(e) { alert("Error saving report."); }
         }
         async function processLFOptFoundUpdate(itemId) { await db.collection("items").doc(itemId).update({ type: 'turned_in' }); renderLFLedgerUIFromCache(); }
         async function processLFOptDismissUpdate(itemId) { await db.collection("users").doc(loggedUserToken).update({ dismissedItems: firebase.firestore.FieldValue.arrayUnion(itemId) }); renderLFLedgerUIFromCache(); }
         async function processLFClaimSequence(itemId, name, oldLoc) {
-            let ver = prompt(`Verification query for: ${name}\nFound At: ${oldLoc}\nDescribe features:`);
+            let ver = prompt(`CLAIM ITEM VERIFICATION FOR: ${name}\nFound At: ${oldLoc}\n\nDescribe a unique feature or look to verify you own this item:`);
             if(ver && ver.trim() !== "") { await db.collection("items").doc(itemId).update({ claimed: true }); renderLFLedgerUIFromCache(); }
         }
 
-        // --- FITTRACK APP ---
+        // --- FITTRACK ---
         function bootFitnessSystem() { changeViewFrame('view-fitness-app'); toggleFitnessSubMode('eligibility'); }
         async function toggleFitnessSubMode(mode) {
             if(mode === 'eligibility') {
@@ -964,7 +1005,7 @@
         }
         async function commitFitnessMetricsToFirebase() {
             const disc = document.getElementById('fit-log-discipline').value; const val = parseFloat(document.getElementById('fit-log-value').value);
-            if(isNaN(val) || val <= 0) { alert("Invalid numerical value."); return; }
+            if(isNaN(val) || val <= 0) { alert("Please enter a valid positive number for your score."); return; }
             const ref = db.collection("fitness_profiles").doc(loggedUserToken);
             try {
                 const doc = await ref.get(); let up = {};
@@ -973,19 +1014,19 @@
                     if(isNaN(old)) up[disc] = val;
                     else up[disc] = (disc === 'sprint') ? (val < old ? val : old) : (val > old ? val : old);
                 } else { up[disc] = val; }
-                await ref.set(up, { merge: true }); alert("Personal metrics updated!"); document.getElementById('fit-log-value').value=""; syncFitnessBestLabelsUI();
-            } catch(e) { alert("Error saving data matrix."); }
+                await ref.set(up, { merge: true }); alert("Your score has been updated in your personal history tracker!"); document.getElementById('fit-log-value').value=""; syncFitnessBestLabelsUI();
+            } catch(e) { alert("Error saving metrics data."); }
         }
         function runSportEligibilityEvaluation() {
             const key = document.getElementById('fit-sport-selector').value; const target = standardSportBenchmarks[key];
-            document.getElementById('sport-benchmarks-readout').innerHTML = `• Sprint: <= ${target.sprint}s | • Long Jump: >= ${target.longjump}m | • Pushups: >= ${target.pushups} reps | • Run: >= ${target.distance}m`;
+            document.getElementById('sport-benchmarks-readout').innerHTML = `• 100m Sprint: ${target.sprint} seconds or less<br>• Long Jump: ${target.longjump} meters or more<br>• Push-ups: ${target.pushups} reps or more<br>• Distance Run: ${target.distance} meters or more`;
             const s = parseFloat(document.getElementById('comp-sprint').value); const j = parseFloat(document.getElementById('comp-longjump').value);
             const p = parseFloat(document.getElementById('comp-pushups').value); const d = parseFloat(document.getElementById('comp-distance').value);
             const shield = document.getElementById('eligibility-shield-target');
-            if(isNaN(s) || isNaN(j) || isNaN(p) || isNaN(d)) { shield.innerHTML = "Awaiting structural validation parameters."; return; }
+            if(isNaN(s) || isNaN(j) || isNaN(p) || isNaN(d)) { shield.innerHTML = "Fill in all four score boxes on the left to test team requirements qualification status."; return; }
             if(s <= target.sprint && j >= target.longjump && p >= target.pushups && d >= target.distance) {
-                shield.innerHTML = `<span style='color:#10B981; font-weight:bold;'>✓ ELIGIBILITY VALIDATED</span>`;
-            } else { shield.innerHTML = `<span style='color:#EF4444; font-weight:bold;'>⚠️ UNMET CRITERIA LINE</span>`; }
+                shield.innerHTML = `<span style='color:#10B981; font-weight:bold; font-size:1.1rem;'>✓ ELIGIBILITY VERIFIED</span><p style="margin-top:10px; color:var(--text-main); font-size:0.9rem;">You are physically eligible for this sport.</p>`;
+            } else { shield.innerHTML = `<span style='color:#EF4444; font-weight:bold;'>⚠️ REQUIREMENTS NOT MET</span><p style="font-size:0.85rem; margin:10px 0;">Some typed scores are below the team benchmark line.</p>`; }
         }
 
         // --- SEATING PLANNER ---
@@ -994,9 +1035,9 @@
             const cap = parseInt(document.getElementById('seat-input-capacity').value);
             const names = document.getElementById('seat-input-roster').value;
             const cName = document.getElementById('seat-input-classname').value;
-            if(isNaN(cap) || cap <= 0 || !cName.trim()) { alert("Provide valid capacity context markers."); return; }
+            if(isNaN(cap) || cap <= 0 || !cName.trim()) { alert("Please fill out the class name and total desk capacity count size numbers!"); return; }
             let studs = names.split(',').map(s => s.trim()).filter(s => s !== "");
-            if(studs.length === 0 || studs.length > cap) { alert("Roster density violation bounds."); return; }
+            if(studs.length === 0 || studs.length > cap) { alert("Error: The number of student names exceeds the available desks capacity."); return; }
             
             let blueprint = new Array(cap).fill(null);
             for(let i=0; i<studs.length; i++) { blueprint[i] = studs[i]; }
@@ -1016,14 +1057,14 @@
         async function commitArrangementChartToFirebase() {
             if(!currentlyCompiledSeatingPlan) return;
             await db.collection("seating_plans").add({ teacherId: loggedUserToken, className: currentlyCompiledSeatingPlan.className, capacity: currentlyCompiledSeatingPlan.capacity, grid: currentlyCompiledSeatingPlan.grid });
-            alert("Matrix schema safely stored."); renderSavedChartsHistoryList();
+            alert("Seating arrangement saved to the database successfully!"); renderSavedChartsHistoryList();
         }
         async function renderSavedChartsHistoryList() {
             const snap = await db.collection("seating_plans").where("teacherId", "==", loggedUserToken).get();
             const logs = document.getElementById('seating-history-logs-target'); logs.innerHTML = "";
             snap.forEach(doc => {
                 const c = doc.data(); const card = document.createElement('div'); card.className = "historical-chart-card";
-                card.innerHTML = `<strong>📋 Class: ${c.className}</strong> (Capacity: ${c.capacity})<br><button class="secondary-btn" style="padding:4px 8px; font-size:10px; margin-top:5px;" onclick='restoreSavedChartFromHistory(${JSON.stringify(c.grid)})'>Visualize</button>`;
+                card.innerHTML = `<strong>📋 Class: ${c.className}</strong> (Capacity: ${c.capacity} Desks)<br><button class="secondary-btn" style="padding:4px 8px; font-size:10px; margin-top:5px;" onclick='restoreSavedChartFromHistory(${JSON.stringify(c.grid)})'>Visualize Layout</button>`;
                 logs.appendChild(card);
             });
         }
@@ -1044,11 +1085,11 @@
                     <label>Event Name:</label><input type='text' id='ev-title'>
                     <label>Date & Time:</label><input type='text' id='ev-date'>
                     <label>Location / Details:</label><textarea id='ev-desc'></textarea>
-                    <label>Total Seats Available:</label><input type='number' id='ev-seats'>
+                    <label>Total Seats Available for Booking:</label><input type='number' id='ev-seats'>
                     <label>Are Parents Invited?:</label>
                     <select id='ev-parents-allowed'>
-                        <option value='yes'>Yes, open to parents</option>
-                        <option value='no'>No, internal scope only</option>
+                        <option value='yes'>Yes, Parents can book seats</option>
+                        <option value='no'>No, Students and Teachers only</option>
                     </select>
                     <button class='primary-btn' onclick="submitNewEventToCloud('approved')">Launch Event Live</button>`;
             } else if(loggedUserRole === 'student') {
@@ -1056,19 +1097,19 @@
                 document.getElementById('teacher-approvals-section').style.display = "none"; 
                 document.getElementById('general-events-header').style.display = "block";
                 lp.innerHTML = `
-                    <h3>Propose New Event</h3>
+                    <h3>Create Your Own Event</h3>
                     <label>Event Name:</label><input type='text' id='ev-title'>
                     <label>Date & Time:</label><input type='text' id='ev-date'>
                     <label>Location / Details:</label><textarea id='ev-desc'></textarea>
-                    <label>Anticipated Attendees:</label><input type='number' id='ev-seats'>
-                    <button class='primary-btn' onclick="submitNewEventToCloud('pending')">Submit Proposal</button>`;
+                    <label>How many people can join?:</label><input type='number' id='ev-seats'>
+                    <button class='primary-btn' onclick="submitNewEventToCloud('pending')">Ask for Teacher Verification</button>`;
             } else if(loggedUserRole === 'parent') {
                 title.innerText = "Book Event Tickets"; 
                 document.getElementById('teacher-approvals-section').style.display = "none"; 
                 document.getElementById('general-events-header').style.display = "block";
                 lp.innerHTML = `
-                    <h3>Ticket Reservation Control</h3>
-                    <label>Confirm Child's Exact Username:</label>
+                    <h3>Book Seat Tickets</h3>
+                    <label>Your Child's Username or Email:</label>
                     <input type='text' id='ev-parent-child' placeholder='Enter username'>`;
             }
             renderLiveEventsFeedList();
@@ -1081,12 +1122,12 @@
             const s = parseInt(document.getElementById('ev-seats').value);
             const pa = document.getElementById('ev-parents-allowed') ? document.getElementById('ev-parents-allowed').value : 'yes';
             
-            if(!t.trim() || !d.trim() || isNaN(s)) { alert("All profile parameters required."); return; }
+            if(!t.trim() || !d.trim() || isNaN(s)) { alert("Please fill in all event details!"); return; }
             try {
                 await db.collection("events").add({ title: t.trim(), date: d.trim(), desc: desc.trim(), maxSeats: s, seatsLeft: s, parentsAllowed: pa, status: status, creator: loggedUserToken, participants: [], reservations: [] });
-                alert("Event logged."); document.getElementById('ev-title').value = ""; document.getElementById('ev-date').value = ""; document.getElementById('ev-desc').value = ""; document.getElementById('ev-seats').value = "";
+                alert("Event loaded successfully!"); document.getElementById('ev-title').value = ""; document.getElementById('ev-date').value = ""; document.getElementById('ev-desc').value = ""; document.getElementById('ev-seats').value = "";
                 renderLiveEventsFeedList();
-            } catch(e) { alert("Error generating tracking doc."); }
+            } catch(e) { alert("Error launching event."); }
         }
 
         async function renderLiveEventsFeedList() {
@@ -1098,29 +1139,28 @@
                 snap.forEach(doc => {
                     const ev = doc.data(); const id = doc.id; 
                     const card = document.createElement('div'); card.className = "repository-item-card";
-                    let badge = ev.parentsAllowed === 'no' ? "<span style='color:#EF4444;'>🚫 Internal Only</span>" : "<span style='color:#10B981;'>👨‍👩‍👧 Family Open</span>";
+                    let badge = ev.parentsAllowed === 'no' ? "<span style='color:#EF4444; font-weight:600;'>🚫 Students Only</span>" : "<span style='color:#10B981; font-weight:600;'>👨‍👩‍👧 Parents Invited</span>";
                     
                     if(ev.status === 'pending' && loggedUserRole === 'teacher') {
                         card.className += " pending-accent";
-                        card.innerHTML = `<strong>⏳ PROPOSED: ${ev.title}</strong><br><span style="font-size:0.85rem; color:var(--text-muted);">By: ${ev.creator} | When: ${ev.date}</span><p style="font-size:0.85rem; margin:5px 0;">${ev.desc}</p><button class='action-btn-green' onclick="approveStudentEvent('${id}')">Approve</button>`;
+                        card.innerHTML = `<strong>⏳ PENDING: ${ev.title}</strong><br><span style="font-size:0.85rem; color:var(--text-muted);">Created by: ${ev.creator} | When: ${ev.date}</span><p style="font-size:0.85rem; margin:5px 0;">${ev.desc}</p><button class='action-btn-green' onclick="approveStudentEvent('${id}')">Verify & Approve</button>`;
                         pFeed.appendChild(card);
                     } else if(ev.status === 'approved') {
                         if(loggedUserRole === 'parent' && ev.parentsAllowed === 'no') return;
                         let act = "";
                         
                         if(loggedUserRole === 'parent') {
-                            act = ev.seatsLeft <= 0 ? "<button class='action-btn-red' disabled>SOLD OUT</button>" : `<button class='action-btn-green' onclick="bookParentTicket('${id}')">Reserve Ticket</button>`;
+                            act = ev.seatsLeft <= 0 ? "<button class='action-btn-red' disabled>SOLD OUT</button>" : `<button class='action-btn-green' onclick="bookParentTicket('${id}')">Book Seat (-1)</button>`;
                         } else if(loggedUserRole === 'student') {
-                            // Checked if student has already participated
                             if(ev.participants && ev.participants.includes(loggedUserToken)) {
-                                act = `<button class='secondary-btn' style='padding:6px 14px; width:auto; border-color:#10B981; color:#10B981;' disabled>✓ Participating</button>`;
+                                act = `<button class='secondary-btn' style='padding:6px 14px; width:auto; border-color:#10B981; color:#10B981; font-weight:600;' disabled>✓ Participating</button>`;
                             } else {
                                 act = `<button class='primary-btn' style='padding:6px 14px; width:auto;' onclick="joinEventAsStudent('${id}')">Participate</button>`;
                             }
                         } else if(loggedUserRole === 'teacher') {
-                            act = `<span class='tech-font' style='font-size:0.8rem;'>Capacity context: ${ev.seatsLeft}/${ev.maxSeats} open</span>`;
+                            act = `<span class='tech-font' style='font-size:0.8rem; color:var(--accent-cyan);'>${ev.seatsLeft} out of ${ev.maxSeats} Seats Left</span>`;
                         }
-                        card.innerHTML = `<strong>📅 ${ev.title}</strong><br><span style='font-size:0.8rem; color:var(--text-muted);'>Schedule: ${ev.date} | ${badge}</span><p style="font-size:0.85rem; margin:5px 0 10px 0;">${ev.desc || ''}</p>${act}`;
+                        card.innerHTML = `<strong>📅 ${ev.title}</strong><br><span style='font-size:0.8rem; color:var(--text-muted);'>When: ${ev.date} | ${badge}</span><p style="font-size:0.85rem; margin:5px 0 10px 0;">Info: ${ev.desc || ''}</p>${act}`;
                         feed.appendChild(card);
                     }
                 });
@@ -1131,22 +1171,22 @@
         async function joinEventAsStudent(id) { 
             try {
                 await db.collection("events").doc(id).update({ participants: firebase.firestore.FieldValue.arrayUnion(loggedUserToken) }); 
-                alert("You are now registered for this event!");
+                alert("You have joined this event successfully!");
                 renderLiveEventsFeedList(); 
             } catch(e) { alert("Error joining event."); }
         }
         
         async function bookParentTicket(id) {
             const child = document.getElementById('ev-parent-child').value.trim().toLowerCase();
-            if(!child) { alert("Confirm target child registration."); return; }
+            if(!child) { alert("Please type your Child's Username on the left side first!"); return; }
             const sDoc = await db.collection("users").doc(child).get();
-            if(!sDoc.exists) { alert("Target matching parameters failed."); return; }
+            if(!sDoc.exists) { alert("Error: No student profile found with that username!"); return; }
             
             const ref = db.collection("events").doc(id); const snap = await ref.get();
             if(snap.exists && snap.data().seatsLeft > 0) {
                 await ref.update({ seatsLeft: snap.data().seatsLeft - 1, reservations: firebase.firestore.FieldValue.arrayUnion(`Parent: ${loggedUserToken} -> ${child}`) });
-                alert(`Ticket booked for ${child}!`); bootEventPulseSystem();
-            } else { alert("Capacity exhaustion."); }
+                alert(`Success! 1 Ticket has been reserved for ${child}.`); bootEventPulseSystem();
+            } else { alert("Sorry, this event is completely sold out."); }
         }
     </script>
 </body>
